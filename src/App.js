@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
-import Links from './components/Links.js';
-import LinkForm from './components/LinkForm';
+import { OrderView } from './components/orderView';
 
-function App() {
+export const App = () => {
   return (
     <div>
-      <LinkForm/>
-      <Links/>
+      <OrderView/>
     </div>
   );
 }
 
-export default App;
