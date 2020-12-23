@@ -9,6 +9,7 @@ export const OrderView = () => {
     table: '',
   };
 
+  const [currentMenu, setCurrentMenu] = useState('almuerzo y cena');
   const [values, setValues] = useState(initialStateValues);
 
   const handleInputChange = (e) => {
@@ -26,8 +27,11 @@ export const OrderView = () => {
       onChange={handleInputChange}
       // value={client}
       />
+      <button onClick={()=> setCurrentMenu('desayuno')}>Desayuno</button>
+      <button onClick={()=> setCurrentMenu('almuerzo y cena')}>Almuerzo y Cena</button>
+
       <InfoClient infoClient={values}/>
-      <SetOrder/>
+      <SetOrder menuType={currentMenu}/>
     </div>
     
   )
