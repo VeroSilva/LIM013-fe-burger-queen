@@ -4,6 +4,9 @@ import { SetOrder } from './setOrder';
 
 export const OrderView = () => {
 
+  const [typeFood, setTypeFood] = useState('desayuno');
+
+  const options = ["Select a table", "A1", "A2", "A3"];
   const initialStateValues = {
     client: '',
     table: '',
@@ -26,8 +29,21 @@ export const OrderView = () => {
       onChange={handleInputChange}
       // value={client}
       />
+
+      <select name="table"
+        onChange={handleInputChange}>  
+        {options.map(option => {
+          return <option value={option} key={option} >{option}</option>})}
+      </select>
       <InfoClient infoClient={values}/>
-      <SetOrder/>
+
+      <div>
+        <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
+        <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+      </div>
+
+      <SetOrder typeFood={typeFood}/>
+
     </div>
     
   )
