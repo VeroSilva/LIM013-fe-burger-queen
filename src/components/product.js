@@ -1,8 +1,12 @@
 import React from 'react';
 
-export const Product = () => {
+export const Product = (props) => {
 
   return (
-    <h1>Products</h1>
+    
+      
+        <li>{props.item.description}</li>
+      
+    
   )
 }
