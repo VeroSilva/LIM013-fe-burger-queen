@@ -6,6 +6,12 @@ import {db} from '../firebase'
 export const SetOrder = (props) => {
   
   const [menu, setMenu] = useState([]);
+  const [order, setOrder] = useState([]);
+
+  const selectProduct = (item) => {
+    setOrder([...order, item]);
+    // console.log(order);
+  }
 
   useEffect(()=>{
     db.collection('items').where('menu','==', props.typeFood).get()
@@ -22,7 +28,11 @@ export const SetOrder = (props) => {
     <div>
       <h1>Taking order</h1>
       <ul>
-      {menu.map((item, index) => <Product key = {'x'+ index} item = {item}/>)}
+      {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} />)}
+      </ul>
+
+      <ul>
+      {order.map((item, index) => <Product key = {'o'+ index} itemProduct = {item} />)}
       </ul>
 
       <TotalOrder />
