@@ -1,8 +1,13 @@
 import React from 'react';
 
 export const Product = (props) => {
+ 
 
   return (
-    <li>{props.item.description}  S/.{props.item.price}</li>
+    <li
+      onClick={ () => (props.selectProduct(props.itemProduct))}
+    >
+      <div>{props.itemProduct.description}  S/.{props.itemProduct.price}</div>
+    </li>
   )
 }
