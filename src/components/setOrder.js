@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TotalOrder } from './totalOrder';
 import { Product } from './product';
-import { db } from '../firebase' ;
+import {db} from '../firebase'
 
 export const SetOrder = (props) => {
   
-  console.log(props);
-  if (props.menuType === "desayuno"){
-    const data = db.collection('items').where("menu", "==", "desayuno").get();
-    data.then( function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-      });
-    });
-  };
+  const [menu, setMenu] = useState([]);
+
+  useEffect(()=>{
+    db.collection('items').where('menu','==', props.typeFood).get()
+    .then((queryResults)=>{
+      const arrayMenu =[]
+      queryResults.forEach((doc)=>{arrayMenu.push(doc.data());
+      })
+      console.log(arrayMenu)
+      setMenu(arrayMenu)
+    })
+  },[props.typeFood])
 
   return (
     <div>
       <h1>Taking order</h1>
-      <Product />
+      <ul>
+      {menu.map((item, index) => <Product key = {'x'+ index} item = {item}/>)}
+      </ul>
+
       <TotalOrder />
     </div>
   )
