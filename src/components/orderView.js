@@ -3,23 +3,23 @@ import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
 
 export const OrderView = () => {
-  const options = ["Select a table", "A1", "A2", "A3"]
+
+  const [typeFood, setTypeFood] = useState('desayuno');
+
+  const options = ["Select a table", "A1", "A2", "A3"];
+
   const initialStateValues = {
     client: '',
     table: '',
   };
 
   const [values, setValues] = useState(initialStateValues);
-  const [typeFood,setTypeFood]=useState('desayuno');
 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
     setValues({...values, [name]: value});
   }
-  const handleChange = (e) => {
-    const { value} = e.target;
-    setValues({...values, 'table': value});
-  }
+
 
   return(
     <div>
@@ -31,8 +31,9 @@ export const OrderView = () => {
       onChange={handleInputChange}
       // value={client}
       />
-      <select name=""
-      onChange={handleChange}>
+      <select name="table"
+        onChange={handleInputChange}>  
+
         {options.map(option => {
           return <option value={option} key={option} >{option}</option>})}
       </select>
@@ -43,6 +44,7 @@ export const OrderView = () => {
         <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
       </div>
       <SetOrder typeFood={typeFood}/>
+
     </div>
     
   )
