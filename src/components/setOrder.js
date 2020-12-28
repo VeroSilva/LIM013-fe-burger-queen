@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 import { TotalOrder } from './totalOrder';
@@ -12,7 +11,7 @@ export const SetOrder = (props) => {
 
   const selectProduct = (item) => {
     setOrder([...order, item]);
-    // console.log(order);
+    console.log(order);
   }
 
   useEffect(()=>{
@@ -25,14 +24,9 @@ export const SetOrder = (props) => {
       setMenu(arrayMenu)
     })
   },[props.typeFood])
-
+  console.log(menu);
   return (
     <div>
-      <ul>
-      {menu.map((item,index)=>
-      <Product key={'x'+index} item={item}/>)}
-      </ul>
-
 
       <h1>Taking order</h1>
 
