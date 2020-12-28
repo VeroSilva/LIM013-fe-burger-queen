@@ -9,5 +9,6 @@ export const Product = (props) => {
     >
       <div>{props.itemProduct.description}  S/.{props.itemProduct.price}</div>
     </li>
+
   )
 }

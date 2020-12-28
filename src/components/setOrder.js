@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useEffect, useState } from 'react';
+
 import { TotalOrder } from './totalOrder';
 import { Product } from './product';
 import {db} from '../firebase'
@@ -26,7 +28,14 @@ export const SetOrder = (props) => {
 
   return (
     <div>
+      <ul>
+      {menu.map((item,index)=>
+      <Product key={'x'+index} item={item}/>)}
+      </ul>
+
+
       <h1>Taking order</h1>
+
       <ul>
       {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} />)}
       </ul>
@@ -34,7 +43,6 @@ export const SetOrder = (props) => {
       <ul>
       {order.map((item, index) => <Product key = {'o'+ index} itemProduct = {item} />)}
       </ul>
-
       <TotalOrder />
     </div>
   )

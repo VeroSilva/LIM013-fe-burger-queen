@@ -7,6 +7,7 @@ export const OrderView = () => {
   const [typeFood, setTypeFood] = useState('desayuno');
 
   const options = ["Select a table", "A1", "A2", "A3"];
+
   const initialStateValues = {
     client: '',
     table: '',
@@ -19,6 +20,7 @@ export const OrderView = () => {
     setValues({...values, [name]: value});
   }
 
+
   return(
     <div>
       <h1>Order View</h1>
@@ -29,9 +31,9 @@ export const OrderView = () => {
       onChange={handleInputChange}
       // value={client}
       />
-
       <select name="table"
         onChange={handleInputChange}>  
+
         {options.map(option => {
           return <option value={option} key={option} >{option}</option>})}
       </select>
@@ -41,7 +43,6 @@ export const OrderView = () => {
         <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
         <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
       </div>
-
       <SetOrder typeFood={typeFood}/>
 
     </div>
