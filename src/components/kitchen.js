@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
-export const Kitchen = () => {
+import {KitchenOrder} from './kitchenOrder'
+export const Kitchen = (props) => {
 
   return (
     <div>
-      <h1>Kitchen</h1>
+      {props.showOrder.map((item, index) => <KitchenOrder key = {'ko'+ index} showOrder={item} />)}
     </div>
   )
 };
