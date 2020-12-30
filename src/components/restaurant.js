@@ -10,18 +10,11 @@ import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
 
 export const Restaurant = () => {
-  const initialStateProduct={
-    category:'',
-    description:'',
-    menu:'',
-    photo:'',
-    price:'',
-    productCode:''
-  }
-  const [order,setOrder]=useState([initialStateProduct])
+
+  const [order,setOrder]=useState([])
 
   const saveOrder=(arr)=>{
-    setOrder(arr);
+    setOrder([...order,arr]);
    
   }
   console.log(order);
