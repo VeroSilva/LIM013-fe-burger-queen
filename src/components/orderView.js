@@ -42,7 +42,7 @@ export const OrderView = (props) => {
         <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
         <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
       </div>
-      <SetOrder typeFood={typeFood} />
+      <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
 
     </div>
     
