@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
 
-export const OrderView = () => {
+export const OrderView = (props) => {
 
   const [typeFood, setTypeFood] = useState('desayuno');
 
@@ -19,7 +19,6 @@ export const OrderView = () => {
     const {name, value} = e.target;
     setValues({...values, [name]: value});
   }
-
 
   return(
     <div>
@@ -43,7 +42,7 @@ export const OrderView = () => {
         <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
         <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
       </div>
-      <SetOrder typeFood={typeFood}/>
+      <SetOrder typeFood={typeFood} />
 
     </div>
     
