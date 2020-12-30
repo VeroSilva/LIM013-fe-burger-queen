@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
@@ -20,9 +26,29 @@ export const Restaurant = () => {
   }
   console.log(order);
   return (
-    <div>
-      <OrderView addOrder={saveOrder}/>
-      <Kitchen showOrder={order}/>
-    </div>
+    <Router>
+      <div>
+      <nav className ='Buttons'>
+        <ul>
+          <li><Link to="/waiter">Waiter</Link></li>
+          <li><Link to="/kitchen">Kitchen</Link></li>
+        </ul>
+
+      </nav>
+      <Switch>
+          <Route path="/waiter">
+            <OrderView addOrder={saveOrder}/>
+          </Route>
+          <Route path="/kitchen">
+            <Kitchen showOrder={order}/>
+          </Route>
+
+        </Switch>
+
+      
+      
+      </div>
+    </Router>
+
   )
 };
