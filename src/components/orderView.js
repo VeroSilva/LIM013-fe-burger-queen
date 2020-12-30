@@ -14,7 +14,7 @@ export const OrderView = (props) => {
   };
 
   const [values, setValues] = useState(initialStateValues);
-
+ 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
     setValues({...values, [name]: value});
@@ -42,7 +42,7 @@ export const OrderView = (props) => {
         <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
         <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
       </div>
-      <SetOrder typeFood={typeFood} />
+      <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
 
     </div>
     
