@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { OrderView } from './components/orderView';
+import { Restaurant } from './components/restaurant';
 
 export const App = () => {
   return (
     <div>
-      <OrderView/>
+      <Restaurant />
     </div>
   );
 }
