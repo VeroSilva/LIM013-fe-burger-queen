@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 
-import { OrderList } from './orderList.js'
+import { OrderList } from './orderList.js';
 import { Product } from './product';
-import { db } from '../firebase'
+import { db } from '../firebase';
 
 export const SetOrder = (props) => {
   
