@@ -4,8 +4,6 @@ import { db } from '../firebase';
 
 export const Kitchen = (props) => {
 const [showOrder, setShowOrder] = useState([]);
-  // let items =  props.orderList[index].items;
-  
   useEffect(()=>{
     db.collection('orders').onSnapshot((doc) => {
       const arrayMenu =[]
@@ -17,7 +15,6 @@ const [showOrder, setShowOrder] = useState([]);
       })
       setShowOrder(arrayMenu)
     })
-    
   }, []);
 console.log(showOrder);
   return (
@@ -25,22 +22,13 @@ console.log(showOrder);
       {showOrder.map((order,index)=>
         <ul key={order.id}>
           <p>Pedido Nro.{index+1}</p>
-          <p>Status:{order.status}</p>
-          <p>Tiempo</p>
+          <p>Status: {order.status}</p>
+          <p>Tiempo: {order.time}</p>
           <p>Detalle de Pedido</p>
-          {order.order.map((element,index)=>
-          <p key={'o'+index}>{element.description}</p>)}
+          {order.items.map((element,index)=>
+          <li key={'o'+index}>{element}</li>)}
         </ul>
-
       )}
-      {/* {props.listOrder.map((order, index) => <div key={index}>
-        <h1>Pedido {index + 1 }: </h1>
-        <ul>
-          {order.item.map((element, index)=> <li key={index + Math.random()}>{element.description}</li>)}
-        </ul>
-        <label>Estado</label>
-      </div>
-      )} */}
     </div>
   )
 };
