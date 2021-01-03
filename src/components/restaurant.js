@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -6,42 +7,36 @@ import {
   Link
 } from "react-router-dom";
 
+
 import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
 
 export const Restaurant = () => {
 
-  const [order,setOrder]=useState([])
+  
+  const addOrder = (order) => {
+    const itemsOrder = order.map((element) => {
+      return element['description'];
+    });
 
-  const saveOrder=(arr)=>{
-    setOrder([...order,arr]);
-   
-  }
-  console.log(order);
+    db.collection('orders').doc().set({
+      time:new Date().toLocaleString(),
+      items:itemsOrder,
+      status:'Pending',
+    });
+  };
+
   return (
-    <Router>
-      <div>
-      <nav className ='Buttons'>
-        <ul>
-          <li><Link to="/waiter">Waiter</Link></li>
-          <li><Link to="/kitchen">Kitchen</Link></li>
-        </ul>
-
-      </nav>
-      <Switch>
-          <Route path="/waiter">
-            <OrderView addOrder={saveOrder}/>
-          </Route>
-          <Route path="/kitchen">
-            <Kitchen showOrder={order}/>
-          </Route>
-
-        </Switch>
-
-      
-      
-      </div>
-    </Router>
+    <div>
+      <OrderView addOrder={addOrder}/>
+      <Kitchen/>
+    </div>
 
   )
 };
+
+// {props.listOrder.map((order, index) => <div key={index}>
+// <h1>Pedido {index + 1 }: </h1>
+// <ul>
+//   {order.item.map((element, index)=> <li key={index + Math.random()}>{element.description}</li>)}
+// </ul>

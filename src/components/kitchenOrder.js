@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
+
 
 export const KitchenOrder = (props) => {
 
   return (
-    <div>
-      {props.showOrder.description}
-    
-    </div>
+    <li>{props.element.description}</li>
   )
 };
+
