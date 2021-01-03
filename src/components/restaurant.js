@@ -1,15 +1,14 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-
+import { db } from '../firebase';
 
 import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
+import {Menu} from './navbar';
 
 export const Restaurant = () => {
 
@@ -27,10 +26,23 @@ export const Restaurant = () => {
   };
 
   return (
-    <div>
-      <OrderView addOrder={addOrder}/>
-      <Kitchen/>
-    </div>
+    <main>
+      <header>
+        <h1>Burguer Queen</h1>
+      </header>
+      <Switch>
+        <Route path="/restaurant">
+          <Menu/>
+        </Route>
+        <Route path="/waiter">
+          <OrderView addOrder={addOrder}/>
+        </Route>
+          <Route path="/kitchen">
+          <Kitchen/>
+          </Route>
+      </Switch>
+</main>
+
 
   )
 };
