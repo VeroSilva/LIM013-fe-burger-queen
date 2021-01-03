@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
+import '../styles/orderView.css'
 
 export const OrderView = (props) => {
 
@@ -21,30 +22,39 @@ export const OrderView = (props) => {
   }
 
   return(
-    <div>
-      <h1>Order View</h1>
-      <input
-      type="text"
-      placeholder="Client name"
-      name="client"
-      onChange={handleInputChange}
-      // value={client}
-      />
-      <select name="table"
-        onChange={handleInputChange}>  
-
-        {options.map(option => {
-          return <option value={option} key={option} >{option}</option>})}
-      </select>
-      <InfoClient infoClient={values}/>
-
+    <section className="order-view-section">
       <div>
-        <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
-        <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
-      </div>
-      <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
+        <h1>Order View</h1>
+        <input
+        type="text"
+        placeholder="Client name"
+        name="client"
+        onChange={handleInputChange}
+        // value={client}
+        />
+        <select name="table"
+          onChange={handleInputChange}>  
 
-    </div>
+          {options.map(option => {
+            return <option value={option} key={option} >{option}</option>})}
+        </select>
+        <div>
+          <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
+          <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+        </div>
+      </div>
+      <section>
+        <section className="section-products-container">
+          <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
+        </section>
+        <section>
+          <InfoClient infoClient={values}/>
+        </section>
+      </section>
+
+      
+
+    </section>
     
   )
 }
