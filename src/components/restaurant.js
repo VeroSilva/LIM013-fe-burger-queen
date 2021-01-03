@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
-import { db } from '../firebase';
+
+import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
 
 export const Restaurant = () => {
+
   
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
@@ -23,6 +31,7 @@ export const Restaurant = () => {
       <OrderView addOrder={addOrder}/>
       <Kitchen/>
     </div>
+
   )
 };
 
