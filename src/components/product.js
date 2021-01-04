@@ -7,7 +7,9 @@ export const Product = (props) => {
     <li
       onClick={ () => (props.selectProduct(props.itemProduct))}
     >
-      <div>{props.itemProduct.description}  S/.{props.itemProduct.price}</div>
+      <p>{props.itemProduct.description}  S/.{props.itemProduct.price}</p>
+      <div>S/.{props.itemProduct.price}</div>
+      <img src={props.itemProduct.photo} alt="img-product"></img>
     </li>
 
   )

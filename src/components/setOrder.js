@@ -12,7 +12,6 @@ export const SetOrder = (props) => {
 
   const selectProduct = (item) => {
     setOrder([...order, item]);
-    console.log(order);
   }
   const totalOrder=order.reduce((acc,menu)=>acc+menu.price,0);
   
@@ -31,6 +30,10 @@ export const SetOrder = (props) => {
     })
   },[props.typeFood]);
 
+  const cleanOrder = () => {
+    setOrder([]);
+  };
+
   return (
     <div>
       <h1>Taking order</h1>
@@ -45,7 +48,13 @@ export const SetOrder = (props) => {
 
       <div className='totalPrice'>
         <div>Total S/. {totalOrder}</div>
-        <button className ='button' onClick={() => props.addOrder(order)}>Tomar pedido</button>
+        <button 
+          className ='button' 
+          onClick={() => {
+            props.addOrder(order);
+            cleanOrder();
+          }}
+        >Tomar pedido</button>
       </div>
     </div>
   )
