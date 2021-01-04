@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Switch,
   Route,
@@ -21,6 +21,7 @@ export const Restaurant = () => {
     db.collection('orders').doc().set({
       time:new Date().toLocaleString(),
       items:itemsOrder,
+      
       status:'Pending',
     });
   };
@@ -35,7 +36,7 @@ export const Restaurant = () => {
           <Menu/>
         </Route>
         <Route path="/waiter">
-          <OrderView addOrder={addOrder}/>
+          <OrderView addOrder={addOrder} />
         </Route>
           <Route path="/kitchen">
           <Kitchen/>

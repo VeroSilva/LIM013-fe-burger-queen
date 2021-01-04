@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { KitchenOrder } from './kitchenOrder';
 import { db } from '../firebase';
 
 export const Kitchen = (props) => {
