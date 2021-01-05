@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { KitchenOrder } from './kitchenOrder';
 import { db } from '../firebase';
-// import { KitchenOrder } from './kitchenOrder';
 
-export const Kitchen = () => {
-
-  // useEffect(()=>{
-  //   db.collection("ordersTest").doc().get()
-  //     .then((querySnapshot) => console.log(querySnapshot))
-  // }, []);
-
-//Queda pendiente que al darle click a tomar pedido este consulte e imprima aquí 
-
+export const Kitchen = (props) => {
+const [showOrder, setShowOrder] = useState([]);
+  useEffect(()=>{
+    db.collection('orders').onSnapshot((doc) => {
+      const arrayMenu =[]
+      doc.forEach((el)=>{
+        arrayMenu.push({
+          id:el.id,
+          ...el.data()
+        });
+      })
+      setShowOrder(arrayMenu)
+    })
+  }, []);
+console.log(showOrder);
   return (
     <div>
-      {/* {props.listOrder.map((order, index) => <div key={index}>
-        <h1>Pedido {index + 1 }: </h1>
-        <ul>
-          {order.item.map((element, index)=> <li key={index + Math.random()}>{element.description}</li>)}
+      {showOrder.map((order,index)=>
+        <ul key={order.id}>
+          <p>Pedido Nro.{index+1}</p>
+          <p>Status: {order.status}</p>
+          <p>Tiempo: {order.time}</p>
+          <p>Detalle de Pedido</p>
+          {order.items.map((element,index)=>
+          <li key={'o'+index}>{element}</li>)}
         </ul>
-        <label>Estado</label>
-      </div>
-      )} */}
+      )}
     </div>
   )
 };

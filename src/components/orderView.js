@@ -21,30 +21,30 @@ export const OrderView = (props) => {
   }
 
   return(
-    <div>
-      <h1>Order View</h1>
-      <input
-      type="text"
-      placeholder="Client name"
-      name="client"
-      onChange={handleInputChange}
-      // value={client}
-      />
-      <select name="table"
-        onChange={handleInputChange}>  
-
-        {options.map(option => {
-          return <option value={option} key={option} >{option}</option>})}
-      </select>
-      <InfoClient infoClient={values}/>
+    <div className="container">
+      <div>
+        <InfoClient infoClient={values}/>
+      </div>
 
       <div>
-        <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
-        <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+        <input
+          type="text"
+          placeholder="Client name"
+          name="client"
+          onChange={handleInputChange}
+          // value={client}
+        />
+        <select name="table"
+          onChange={handleInputChange}>  
+          {options.map(option => {
+            return <option value={option} key={option} >{option}</option>})}
+        </select>
+        <div>
+          <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
+          <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+        </div>
+        <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
       </div>
-      <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
-
     </div>
-    
   )
 }

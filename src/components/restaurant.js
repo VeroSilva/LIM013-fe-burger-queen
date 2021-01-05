@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { db } from '../firebase';
-// import { Kitchen } from './kitchen';
+
+import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
 
 export const Restaurant = () => {
-
+  
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
       return element['description'];
     });
 
-    db.collection('ordersTest').doc().set({
-        status: 'Pending',
-        pedido: itemsOrder,
-        date: new Date(),
+    db.collection('orders').doc().set({
+      time:new Date().toLocaleString(),
+      items:itemsOrder,
+      status:'Pending',
     });
-    
   };
 
   return (
     <div>
       <OrderView addOrder={addOrder}/>
+      <Kitchen />
     </div>
   )
 };
-
-// const [listOrder, setListOrder] = useState([]);
-// setListOrder([...listOrder, {item: order, date: new Date()}]);
