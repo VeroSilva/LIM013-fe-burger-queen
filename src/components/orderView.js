@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
+import '../styles/orderView.css'
 
 export const OrderView = (props) => {
 
@@ -14,37 +15,38 @@ export const OrderView = (props) => {
   };
 
   const [values, setValues] = useState(initialStateValues);
-
+ 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
     setValues({...values, [name]: value});
   }
 
   return(
-    <div className="container">
-      <div>
-        <InfoClient infoClient={values}/>
-      </div>
+    <section className="order-view-section">
+      <div className='input-section'>
 
-      <div>
-        <input
+          <input className="input"
           type="text"
           placeholder="Client name"
           name="client"
           onChange={handleInputChange}
           // value={client}
-        />
-        <select name="table"
-          onChange={handleInputChange}>  
-          {options.map(option => {
-            return <option value={option} key={option} >{option}</option>})}
-        </select>
-        <div>
-          <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
-          <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
-        </div>
-        <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
+          />
+          <select className="select" name="table"
+            onChange={handleInputChange}>  
+
+            {options.map(option => {
+              return <option value={option} key={option} >{option}</option>})}
+          </select>
       </div>
-    </div>
+      <div className='btn-section'>
+          <button className="button menu" onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
+          <button className="button menu" onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+        </div>
+      <div className='info-section'>
+        <InfoClient infoClient={values}/>
+        </div>
+          <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
+    </section>
   )
 }

@@ -4,10 +4,12 @@ export const Product = (props) => {
  
 
   return (
-    <li
+    <li className="item-product"
       onClick={ () => (props.selectProduct(props.itemProduct))}
     >
-      <div>{props.itemProduct.description}  S/.{props.itemProduct.price}</div>
+      <p className="item-name">{props.itemProduct.description} </p>
+      <p className="item-price">S/.{props.itemProduct.price}</p>
+      <img className="item-img" src={props.itemProduct.photo} alt="img-product"></img>
     </li>
 
   )
