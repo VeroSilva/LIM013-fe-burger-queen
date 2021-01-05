@@ -2,8 +2,9 @@ import React from 'react';
 
 export const InfoClient = (props) => {
   return(
-    <h2>{props.infoClient.client} | {props.infoClient.table}</h2>
-   
-
+    <>
+    <p>Cliente: {props.infoClient.client}</p>
+    <p>Nro. mesa:{props.infoClient.table}</p>
+    </>
   )
 }

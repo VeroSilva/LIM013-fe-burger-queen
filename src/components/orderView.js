@@ -23,32 +23,31 @@ export const OrderView = (props) => {
 
   return(
     <section className="order-view-section">
-      <div className='header'>
+      <div className='input-section'>
 
-          <input
+          <input className="input"
           type="text"
           placeholder="Client name"
           name="client"
           onChange={handleInputChange}
           // value={client}
           />
-          <select name="table"
+          <select className="select" name="table"
             onChange={handleInputChange}>  
 
             {options.map(option => {
               return <option value={option} key={option} >{option}</option>})}
           </select>
-
-
-        <div >
-          <button onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
-          <button onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
-        </div>
       </div>
-          <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
-        <div className='header1'>
+      <div className='btn-section'>
+          <button className="button menu" onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
+          <button className="button menu" onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+        </div>
+      <div className='info-section'>
         <InfoClient infoClient={values}/>
         </div>
+          <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
+
 
 
       

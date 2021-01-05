@@ -35,7 +35,7 @@ export const SetOrder = (props) => {
   };
 
   return (
-    <div className='display-list-container'>
+    <>
       <ul className='display-list-product'>
         {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} />)}
       </ul>
@@ -43,9 +43,7 @@ export const SetOrder = (props) => {
 
       <ul className="display-list-order">
         {order.map((item, index) => <OrderList key = {'o'+ index} itemProduct = {item} onDelete={()=>onDeleteOrderList(index)}/>)}
-      </ul>
-
-      <div className='totalPrice'>
+        
         <div>Total S/. {totalOrder}</div>
         <button 
           className ='button' 
@@ -54,7 +52,10 @@ export const SetOrder = (props) => {
             cleanOrder();
           }}
         >Tomar pedido</button>
-      </div>
-    </div>
+
+      </ul>
+
+ 
+    </>
   )
 };
