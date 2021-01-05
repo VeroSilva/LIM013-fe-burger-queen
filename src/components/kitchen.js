@@ -16,7 +16,7 @@ const [showOrder, setShowOrder] = useState([]);
       setShowOrder(arrayMenu)
     })
   }, []);
-console.log(showOrder);
+
   return (
     <div>
       {showOrder.map((order,index)=>

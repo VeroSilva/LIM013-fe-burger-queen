@@ -40,11 +40,11 @@ export const SetOrder = (props) => {
         {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} />)}
       </ul>
 
-
       <ul className="display-list-order">
-        {order.map((item, index) => <OrderList key = {'o'+ index} itemProduct = {item} onDelete={()=>onDeleteOrderList(index)}/>)}
-        
-        <div>Total S/. {totalOrder}</div>
+        <div>
+          {order.map((item, index) => <OrderList key = {'o'+ index} itemProduct = {item} onDelete={()=>onDeleteOrderList(index)}/>)}
+        </div>
+        <div className="price-total">Total S/. {totalOrder}</div>
         <button 
           className ='button' 
           onClick={() => {
@@ -52,10 +52,8 @@ export const SetOrder = (props) => {
             cleanOrder();
           }}
         >Tomar pedido</button>
-
       </ul>
 
- 
     </>
   )
 };

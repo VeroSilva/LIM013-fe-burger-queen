@@ -23,8 +23,7 @@ export const OrderView = (props) => {
 
   return(
     <section className="order-view-section">
-      <div className='input-section'>
-
+      <div className="input-section">
           <input className="input"
           type="text"
           placeholder="Client name"
@@ -42,11 +41,11 @@ export const OrderView = (props) => {
       <div className='btn-section'>
           <button className="button menu" onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
           <button className="button menu" onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
-        </div>
+      </div>
       <div className='info-section'>
         <InfoClient infoClient={values}/>
-        </div>
-          <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
+      </div>
+      <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
     </section>
   )
 }
