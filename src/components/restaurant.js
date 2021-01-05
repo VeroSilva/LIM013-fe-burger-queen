@@ -1,9 +1,9 @@
-
 import React,{useState} from 'react';
 import {
   Switch,
   Route,
 } from "react-router-dom";
+
 import { db } from '../firebase';
 
 import { Kitchen } from './kitchen'
@@ -11,8 +11,6 @@ import { OrderView } from './orderView';
 import {Menu} from './navbar';
 
 export const Restaurant = () => {
-
-  
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
       return element['description'];
@@ -21,7 +19,6 @@ export const Restaurant = () => {
     db.collection('orders').doc().set({
       time:new Date().toLocaleString(),
       items:itemsOrder,
-      
       status:'Pending',
     });
   };
@@ -43,8 +40,6 @@ export const Restaurant = () => {
           </Route>
       </Switch>
 </main>
-
-
   )
 };
 

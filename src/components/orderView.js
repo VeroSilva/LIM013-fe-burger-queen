@@ -47,13 +47,6 @@ export const OrderView = (props) => {
         <InfoClient infoClient={values}/>
         </div>
           <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
-
-
-
-      
-      
-
     </section>
-    
   )
 }
