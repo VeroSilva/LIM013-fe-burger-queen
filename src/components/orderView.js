@@ -38,13 +38,16 @@ export const OrderView = (props) => {
               return <option value={option} key={option} >{option}</option>})}
           </select>
       </div>
+
+      <div className='info-section'>
+        <InfoClient infoClient={values}/>
+      </div>
+
       <div className='btn-section'>
           <button className="button menu" onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
           <button className="button menu" onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
       </div>
-      <div className='info-section'>
-        <InfoClient infoClient={values}/>
-      </div>
+
       <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
     </section>
   )
