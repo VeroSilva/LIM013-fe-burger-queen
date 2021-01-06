@@ -1,9 +1,9 @@
-
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Switch,
   Route,
 } from "react-router-dom";
+
 import { db } from '../firebase';
 
 import { Kitchen } from './kitchen'
@@ -11,8 +11,6 @@ import { OrderView } from './orderView';
 import {Menu} from './navbar';
 
 export const Restaurant = () => {
-
-  
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
       return element['description'];
@@ -28,22 +26,24 @@ export const Restaurant = () => {
   return (
     <main>
       <header>
-        <h1>Burguer Queen</h1>
+        <img src="https://user-images.githubusercontent.com/68167686/103605203-4e1c0780-4ee1-11eb-8c96-0d1379f88bf5.png" alt=""/>
+        <div class="directions-links">
+          <a href="/waiter">Waiter</a>
+          <a href="/kitchen">Kitchen</a>
+        </div>
       </header>
       <Switch>
         <Route path="/restaurant">
-          <Menu/>
+          <Menu />
         </Route>
         <Route path="/waiter">
-          <OrderView addOrder={addOrder}/>
+          <OrderView addOrder={addOrder} />
         </Route>
-          <Route path="/kitchen">
-          <Kitchen/>
-          </Route>
+        <Route path="/kitchen">
+          <Kitchen />
+        </Route>
       </Switch>
 </main>
-
-
   )
 };
 
