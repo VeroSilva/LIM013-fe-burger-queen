@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
 import '../styles/orderView.css';
+import { db } from '../firebase';
+
 
 export const OrderView = (props) => {
 
   const [typeFood, setTypeFood] = useState('desayuno');
+  const [ordersDone, setordersDone] = useState([]);
 
   const options = ["Select a table", "A1", "A2", "A3"];
 
@@ -20,6 +23,18 @@ export const OrderView = (props) => {
     const {name, value} = e.target;
     setValues({...values, [name]: value});
   }
+
+  useEffect(()=>{
+    db.collection('orders').where('status', '==', 'Done').onSnapshot((doc) => {
+      const orders =[]
+      doc.forEach((el)=>{
+        orders.push({
+          id:el.id,
+        });
+      })
+      setordersDone(orders);
+    })
+  }, []);
 
   return(
     <section className="order-view-section">
@@ -38,10 +53,13 @@ export const OrderView = (props) => {
               return <option value={option} key={option} >{option}</option>})}
           </select>
       </div>
-
-      <span className="material-icons notification-order-done">
-        notifications
-      </span>
+      
+      <div className='notifications'>
+        <label>{ordersDone.length}</label>
+        <span className="material-icons notification-order-done">
+          notifications
+        </span>
+      </div>
       
       <div className='btn-section'>
           <button className="button menu" onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>

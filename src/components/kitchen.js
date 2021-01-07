@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
+import Modal from 'react-modal';
 import '../styles/kitchen.css';
 
 export const Kitchen = (props) => {
+
   const [showOrder, setShowOrder] = useState([]);
 
   useEffect(()=>{
@@ -23,10 +25,6 @@ export const Kitchen = (props) => {
       status: "Done",
     });
   };
-
-  // const changeClassName = (e) => {
-  //   e.target.classList.add("order-done");
-  // };
 
   return (
     <section className="kitchen-section">

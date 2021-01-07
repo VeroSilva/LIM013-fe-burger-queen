@@ -3,16 +3,12 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-
 import { db } from '../firebase';
-
 import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
 import { Menu } from './navbar';
 
 export const Restaurant = () => {
-
-  const [ordersDone, setOrdersDone] = useState([]); // el estado deberia contener un array con cada orden que esté lista
 
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
@@ -43,7 +39,7 @@ export const Restaurant = () => {
           <OrderView addOrder={addOrder} />
         </Route>
         <Route path="/kitchen">
-          <Kitchen ordersDone={ordersDone}/>
+          <Kitchen />
         </Route>
       </Switch>
 </main>
