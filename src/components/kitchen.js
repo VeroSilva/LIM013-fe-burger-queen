@@ -6,7 +6,7 @@ export const Kitchen = (props) => {
   const [showOrder, setShowOrder] = useState([]);
 
   useEffect(()=>{
-    db.collection('orders').onSnapshot((doc) => {
+    db.collection('orders').orderBy('time').onSnapshot((doc) => {
       const arrayMenu =[]
       doc.forEach((el)=>{
         arrayMenu.push({
