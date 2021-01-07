@@ -1,0 +1,35 @@
+.kitchen-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px;
+  grid-gap: 20px;
+}
+.orders {
+  list-style: none;
+  border: 15px solid #d0d0d0;
+  display: grid;
+  grid-template-rows: 30px 170px 35px;
+  border-radius: 15px;
+  box-shadow: -9px 9px 5px -6px rgba(92, 92, 92, 0.43);
+}
+.detailes-order {
+  justify-content: space-between;
+  display: flex;
+  margin: 5px;
+  border-bottom: 1px solid #dadada;
+}
+.items-order {
+  list-style: none;
+  padding: 10px;
+  overflow: scroll;
+}
+.orders button {
+  border: none;
+  color: white;
+}
+.Done {
+  background: green;
+}
+.Pending {
+  background: red;
+}

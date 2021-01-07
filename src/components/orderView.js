@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
-import '../styles/orderView.css'
+import '../styles/orderView.css';
 
 export const OrderView = (props) => {
 
@@ -39,13 +39,17 @@ export const OrderView = (props) => {
           </select>
       </div>
 
-      <div className='info-section'>
-        <InfoClient infoClient={values}/>
-      </div>
-
+      <span className="material-icons notification-order-done">
+        notifications
+      </span>
+      
       <div className='btn-section'>
           <button className="button menu" onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
           <button className="button menu" onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+      </div>
+
+      <div className='info-section'>
+        <InfoClient infoClient={values}/>
       </div>
 
       <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>

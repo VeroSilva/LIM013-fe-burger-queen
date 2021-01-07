@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{ useState } from 'react';
 import {
   Switch,
   Route,
@@ -8,16 +8,19 @@ import { db } from '../firebase';
 
 import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
-import {Menu} from './navbar';
+import { Menu } from './navbar';
 
 export const Restaurant = () => {
+
+  const [ordersDone, setOrdersDone] = useState([]); // el estado deberia contener un array con cada orden que esté lista
+
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
       return element['description'];
     });
 
     db.collection('orders').doc().set({
-      time:new Date().toLocaleString(),
+      time:new Date().toLocaleTimeString(),
       items:itemsOrder,
       status:'Pending',
     });
@@ -40,7 +43,7 @@ export const Restaurant = () => {
           <OrderView addOrder={addOrder} />
         </Route>
         <Route path="/kitchen">
-          <Kitchen />
+          <Kitchen ordersDone={ordersDone}/>
         </Route>
       </Switch>
 </main>

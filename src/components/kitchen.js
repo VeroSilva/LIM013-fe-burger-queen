@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { KitchenOrder } from './kitchenOrder';
 import { db } from '../firebase';
+import '../styles/kitchen.css';
 
 export const Kitchen = (props) => {
-const [showOrder, setShowOrder] = useState([]);
+  const [showOrder, setShowOrder] = useState([]);
+
   useEffect(()=>{
     db.collection('orders').onSnapshot((doc) => {
       const arrayMenu =[]
@@ -13,23 +14,42 @@ const [showOrder, setShowOrder] = useState([]);
           ...el.data()
         });
       })
-      setShowOrder(arrayMenu)
+      setShowOrder(arrayMenu);
     })
   }, []);
 
+  const changeStatus = (id) => {
+    db.collection('orders').doc(id).update({
+      status: "Done",
+    });
+  };
+
+  // const changeClassName = (e) => {
+  //   e.target.classList.add("order-done");
+  // };
+
   return (
-    <div>
+    <section className="kitchen-section">
       {showOrder.map((order,index)=>
-        <ul key={order.id}>
-          <p>Pedido Nro.{index+1}</p>
-          <p>Status: {order.status}</p>
-          <p>Tiempo: {order.time}</p>
-          <p>Detalle de Pedido</p>
-          {order.items.map((element,index)=>
-          <li key={'o'+index}>{element}</li>)}
-        </ul>
+        <div key={order.id} className="orders">
+          <div className="detailes-order">
+            <p>Nro. {index+1}</p>
+            <p>{order.time}</p>
+          </div>
+          <ul className="items-order">
+            {order.items.map((element,index)=>
+            <li key={'o'+index}>{element}</li>)}
+          </ul>
+          <button
+            className = {order.status}
+            onClick = { ()=>{
+              changeStatus(order.id);
+            }}>
+            {order.status}
+          </button>
+        </div>
       )}
-    </div>
+    </section>
   )
 };
 
