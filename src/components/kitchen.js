@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import Modal from 'react-modal';
 import '../styles/kitchen.css';
+Modal.setAppElement('#root');
 
 export const Kitchen = (props) => {
 
   const [showOrder, setShowOrder] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [idActive, setidActive] = useState();
 
   useEffect(()=>{
     db.collection('orders').orderBy('time').onSnapshot((doc) => {
@@ -40,14 +43,29 @@ export const Kitchen = (props) => {
           </ul>
           <button
             className = {order.status}
-            onClick = { ()=>{
-              changeStatus(order.id);
+            onClick = {()=>{
+              setidActive(order.id);
+              setModalIsOpen(true);
             }}>
             {order.status}
           </button>
         </div>
       )}
+      <Modal
+        className="Modal"
+        overlayClassName="Overlay"
+        isOpen={modalIsOpen} 
+        onRequestClose={() => setModalIsOpen(false)}
+      >
+        <h2>¿This order is done?</h2>
+        <div className="buttons-modal">
+          <button onClick={() => setModalIsOpen(false)}>Close</button>
+          <button onClick={() => {
+            changeStatus(idActive);
+            setModalIsOpen(false);
+          }}>Done</button>
+        </div>
+      </Modal>
     </section>
   )
 };
-
