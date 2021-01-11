@@ -12,7 +12,7 @@ export const Kitchen = (props) => {
   const [idActive, setidActive] = useState();
 
   useEffect(()=>{
-    db.collection('orders').orderBy('time').onSnapshot((doc) => {
+    const unsubscribe=db.collection('orders').orderBy('time').onSnapshot((doc) => {
       const arrayMenu =[]
       doc.forEach((el)=>{
         arrayMenu.push({
@@ -22,6 +22,9 @@ export const Kitchen = (props) => {
       })
       setShowOrder(arrayMenu);
     });
+    return ()=>{
+      unsubscribe();
+    };
   }, []);
 
   const changeStatus = (id) => {
