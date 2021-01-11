@@ -18,6 +18,11 @@
   margin: 5px;
   border-bottom: 1px solid #dadada;
 }
+.detailes-order .timer{
+  background-color:coral;
+  border-radius:15px;
+  
+}
 .items-order {
   list-style: none;
   padding: 10px;

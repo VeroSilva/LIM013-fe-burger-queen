@@ -25,6 +25,7 @@ export const Restaurant = () => {
 
     db.collection('orders').doc().set({
       time:new Date().toLocaleTimeString(),
+      endTime:null,
       items:itemsOrder,
       status:'Pending',
     });
