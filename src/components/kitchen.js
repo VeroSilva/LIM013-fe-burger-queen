@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
+import moment from 'moment';
 import Modal from 'react-modal';
 import '../styles/kitchen.css';
 Modal.setAppElement('#root');
@@ -26,6 +27,7 @@ export const Kitchen = (props) => {
   const changeStatus = (id) => {
 
     db.collection('orders').doc(id).update({
+      endTime:new Date().toLocaleTimeString(),
       status: "Done",
     });
     const newDone = [id];
@@ -38,6 +40,7 @@ export const Kitchen = (props) => {
         <div key={order.id} className="orders">
           <div className="detailes-order">
             <p>Nro. {index+1}</p>
+            {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'minutes'))} min</p>}
             <p>{order.time}</p>
           </div>
           <ul className="items-order">
