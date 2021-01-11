@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
 import '../styles/orderView.css';
-import { db } from '../firebase';
 import { useLocation } from "react-router-dom";
 
 export const OrderView = (props) => {
@@ -10,7 +9,6 @@ export const OrderView = (props) => {
   const location = useLocation();
 
   const [typeFood, setTypeFood] = useState('desayuno');
-  const [ordersDone, setordersDone] = useState([]);
 
   const options = ["Select a table", "A1", "A2", "A3"];
 
@@ -26,19 +24,6 @@ export const OrderView = (props) => {
     setValues({...values, [name]: value});
   }
 
-  useEffect(()=>{
-    db.collection('orders').where('status', '==', 'Done').onSnapshot((doc) => {
-      const orders =[]
-      doc.forEach((el)=>{
-        orders.push({
-          id:el.id,
-        });
-      })
-      setordersDone(orders);
-    })
-  }, []);
-
-  // const { data } = props.location;
   console.log('this is our location: ', location);
 
   return(
@@ -60,7 +45,7 @@ export const OrderView = (props) => {
       </div>
       
       <div className='notifications'>
-        <label>{ordersDone.length}</label>
+        <label>{location.state.length}</label>
         <span className="material-icons notification-order-done">
           notifications
         </span>
