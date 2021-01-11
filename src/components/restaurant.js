@@ -45,9 +45,9 @@ export const Restaurant = () => {
         </div>
       </header>
       <Switch>
-        <Route path="/restaurant">
-          <Menu />
-        </Route>
+        <Route path="/restaurant" component={Menu} />
+          {/* <Menu /> */}
+        {/* </Route> */}
         <Route path="/waiter">
           <OrderView addOrder={addOrder} />
         </Route>

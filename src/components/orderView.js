@@ -3,11 +3,11 @@ import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
 import '../styles/orderView.css';
 import { db } from '../firebase';
-import {
-  Route,
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export const OrderView = (props) => {
+
+  const location = useLocation();
 
   const [typeFood, setTypeFood] = useState('desayuno');
   const [ordersDone, setordersDone] = useState([]);
@@ -39,7 +39,7 @@ export const OrderView = (props) => {
   }, []);
 
   // const { data } = props.location;
-  console.log(props);
+  console.log(location);
 
   return(
     <section className="order-view-section">

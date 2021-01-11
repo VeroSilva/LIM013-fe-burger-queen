@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-export const Menu = () => {
+export const Menu = (props) => {
+
+  console.log(props);
     return (
         <section>
             <nav>
