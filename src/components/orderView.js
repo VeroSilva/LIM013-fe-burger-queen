@@ -3,7 +3,9 @@ import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
 import '../styles/orderView.css';
 import { db } from '../firebase';
-
+import {
+  Route,
+} from "react-router-dom";
 
 export const OrderView = (props) => {
 
@@ -35,6 +37,9 @@ export const OrderView = (props) => {
       setordersDone(orders);
     })
   }, []);
+
+  // const { data } = props.location;
+  console.log(props);
 
   return(
     <section className="order-view-section">

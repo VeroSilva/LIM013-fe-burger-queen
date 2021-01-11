@@ -24,9 +24,12 @@ export const Kitchen = (props) => {
   }, []);
 
   const changeStatus = (id) => {
+
     db.collection('orders').doc(id).update({
       status: "Done",
     });
+    const newDone = [id];
+    props.onNotificationChange(newDone);
   };
 
   return (
