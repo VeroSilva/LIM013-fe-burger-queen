@@ -39,7 +39,7 @@ export const OrderView = (props) => {
   }, []);
 
   // const { data } = props.location;
-  console.log(location);
+  console.log('this is our location: ', location);
 
   return(
     <section className="order-view-section">

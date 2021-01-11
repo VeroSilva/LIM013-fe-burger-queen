@@ -20,7 +20,7 @@ export const Kitchen = (props) => {
         });
       })
       setShowOrder(arrayMenu);
-    })
+    });
   }, []);
 
   const changeStatus = (id) => {

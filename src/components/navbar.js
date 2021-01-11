@@ -1,21 +1,19 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-export const Menu = (props) => {
+
+export const Navbar = (props) => {
 
   console.log(props);
     return (
-        <section>
-            <nav>
-            <ul>
-                <li>
-                <Link to="/waiter">waiter</Link>
-                
-                </li>
-                <li>
-                <Link to="/kitchen">cocina</Link>
-                </li>
-            </ul>
-            </nav>
-        </section>
+      <header>
+        <img src="https://user-images.githubusercontent.com/68167686/103605203-4e1c0780-4ee1-11eb-8c96-0d1379f88bf5.png" alt=""/>
+        <div class="directions-links">
+          <Link to={{
+            pathname:'/waiter',
+            state: props.nroNotifications,
+          }}>Waiter</Link>
+          <Link to="/kitchen">Kitchen</Link>
+        </div>
+      </header>
     )
 }

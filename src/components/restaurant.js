@@ -8,7 +8,7 @@ import {
 import { db } from '../firebase';
 import { Kitchen } from './kitchen'
 import { OrderView } from './orderView';
-import { Menu } from './navbar';
+import { Navbar } from './navbar';
 
 export const Restaurant = () => {
 
@@ -30,22 +30,11 @@ export const Restaurant = () => {
     });
   };
 
-  console.log(nroNotifications);
-
   return (
     <Router>
-      <header>
-        <img src="https://user-images.githubusercontent.com/68167686/103605203-4e1c0780-4ee1-11eb-8c96-0d1379f88bf5.png" alt=""/>
-        <div class="directions-links">
-          <Link to={{
-            pathname:'/waiter',
-            state: nroNotifications,
-          }}>Waiter</Link>
-          <Link to="/kitchen">Kitchen</Link>
-        </div>
-      </header>
+      <Navbar nroNotifications={nroNotifications}/>
       <Switch>
-        <Route path="/restaurant" component={Menu} />
+        {/* <Route path="/restaurant" component={Menu} /> */}
           {/* <Menu /> */}
         {/* </Route> */}
         <Route path="/waiter">
