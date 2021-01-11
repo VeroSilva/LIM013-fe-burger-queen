@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InfoClient } from './infoClient';
 import { SetOrder } from './setOrder';
-import '../styles/orderView.css'
+import '../styles/orderView.css';
+import { useLocation } from "react-router-dom";
 
 export const OrderView = (props) => {
+
+  const location = useLocation();
 
   const [typeFood, setTypeFood] = useState('desayuno');
 
@@ -20,6 +23,8 @@ export const OrderView = (props) => {
     const {name, value} = e.target;
     setValues({...values, [name]: value});
   }
+
+  console.log('this is our location: ', location);
 
   return(
     <section className="order-view-section">
@@ -38,14 +43,21 @@ export const OrderView = (props) => {
               return <option value={option} key={option} >{option}</option>})}
           </select>
       </div>
-
-      <div className='info-section'>
-        <InfoClient infoClient={values}/>
+      
+      <div className='notifications'>
+        <label>{location.state.length}</label>
+        <span className="material-icons notification-order-done">
+          notifications
+        </span>
       </div>
-
+      
       <div className='btn-section'>
           <button className="button menu" onClick={()=>{setTypeFood('desayuno')}}>Desayuno</button>
           <button className="button menu" onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
+      </div>
+
+      <div className='info-section'>
+        <InfoClient infoClient={values}/>
       </div>
 
       <SetOrder typeFood={typeFood} addOrder={props.addOrder}/>
