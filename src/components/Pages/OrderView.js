@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { InfoClient } from '../Order-view/InfoClient';
 import { SetOrder } from '../Order-view/SetOrder';
 import '../../styles/orderView.css';
