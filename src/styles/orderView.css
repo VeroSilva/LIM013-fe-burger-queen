@@ -79,7 +79,7 @@ input[type="text"]:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   justify-self: center;
 }
 .item-product {
@@ -172,7 +172,7 @@ input[type="text"]:hover {
 }
 .notifications {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 /* .display-list-product{

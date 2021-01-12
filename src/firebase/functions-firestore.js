@@ -1,7 +1,8 @@
 import { db } from './initialization-firebase';
 
-const getData =  {
-  getOrder() {
+
+  export const getOrder=(callback)=>{
+  
     db.collection('orders').orderBy('time').onSnapshot((doc) => {
       const arrayMenu =[]
       doc.forEach((el)=>{
@@ -10,9 +11,8 @@ const getData =  {
           ...el.data()
         });
       })
-      // setShowOrder(arrayMenu);
+      callback(arrayMenu);
     });
-  },
-};
+  };
 
-export { getData };
+
