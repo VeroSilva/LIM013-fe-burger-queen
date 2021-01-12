@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { InfoClient } from './infoClient';
-import { SetOrder } from './setOrder';
-import '../styles/orderView.css';
+import { InfoClient } from '../Order-view/InfoClient';
+import { SetOrder } from '../Order-view/SetOrder';
+import '../../styles/orderView.css';
 import { useLocation } from "react-router-dom";
 
 export const OrderView = (props) => {

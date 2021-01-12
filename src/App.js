@@ -1,14 +1,50 @@
-import React from 'react';
-import './App.css';
-
-import { Restaurant } from './components/restaurant';
-
+import React,{ useState } from 'react';
+import {
+  Switch,
+  Route,
+  BrowserRouter as Router,
+} from "react-router-dom";
+import { db } from './firebase/initialization-firebase';
+import { Kitchen } from './components/Pages/Kitchen';
+import { OrderView } from './components/Pages/OrderView';
+import { Navbar } from './components/Navbar';
 
 export const App = () => {
+
+  const [nroNotifications, setNroNotifications] = useState([]);
+
+   const onNotificationChange = (newNotification) => {
+     setNroNotifications(nroNotifications.concat(newNotification));
+   };
+
+  const addOrder = (order) => {
+    const itemsOrder = order.map((element) => {
+      return element['description'];
+    });
+
+    db.collection('orders').doc().set({
+      time:new Date().toLocaleTimeString(),
+      endTime:null,
+      items:itemsOrder,
+      status:'Pending',
+    });
+  };
+
   return (
-    <div>
-      <Restaurant />
-    </div>
+    <Router>
+      <Navbar nroNotifications={nroNotifications}/>
+      <Switch>
+        {/* <Route path="/restaurant" component={Menu} /> */}
+          {/* <Menu /> */}
+        {/* </Route> */}
+        <Route path="/waiter">
+          <OrderView addOrder={addOrder} />
+        </Route>
+        <Route path="/kitchen">
+          <Kitchen onNotificationChange={onNotificationChange}/>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

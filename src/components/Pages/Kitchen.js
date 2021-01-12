@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';
 import moment from 'moment';
 import Modal from 'react-modal';
-import '../styles/kitchen.css';
+import '../../styles/kitchen.css';
+import { getData } from '../../firebase/functions-firestore';
 Modal.setAppElement('#root');
 
 export const Kitchen = (props) => {
@@ -12,16 +12,9 @@ export const Kitchen = (props) => {
   const [idActive, setidActive] = useState();
 
   useEffect(()=>{
-    const unsubscribe=db.collection('orders').orderBy('time').onSnapshot((doc) => {
-      const arrayMenu =[]
-      doc.forEach((el)=>{
-        arrayMenu.push({
-          id:el.id,
-          ...el.data()
-        });
-      })
-      setShowOrder(arrayMenu);
-    });
+    const unsubscribe = getData.getOrder;
+    console.log(unsubscribe);
+    // setShowOrder(arrayMenu);
     return ()=>{
       unsubscribe();
     };
@@ -29,10 +22,10 @@ export const Kitchen = (props) => {
 
   const changeStatus = (id) => {
 
-    db.collection('orders').doc(id).update({
-      endTime:new Date().toLocaleTimeString(),
-      status: "Done",
-    });
+    // db.collection('orders').doc(id).update({
+    //   endTime:new Date().toLocaleTimeString(),
+    //   status: "Done",
+    // });
     const newDone = [id];
     props.onNotificationChange(newDone);
   };
