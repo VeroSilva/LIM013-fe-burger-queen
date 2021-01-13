@@ -16,18 +16,37 @@ export const App = () => {
    const onNotificationChange = (newNotification) => {
      setNroNotifications(nroNotifications.concat(newNotification));
    };
+   const initialStateValues = {
+    client: '',
+    table: '',
+  };
+  const [values, setValues] = useState(initialStateValues);
 
+  const cleanInput=()=>{
+    setValues(initialStateValues);
+  }
+  const handleInput=(data)=>{
+    console.log(data);
+    const {name, value} = data;
+    setValues({...values, [name]: value});
+  }
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
       return element['description'];
     });
+    if(values===initialStateValues || itemsOrder.length===0){
+      alert("Termine de completar para registrar su orden")
+    }else{
+      db.collection('orders').doc().set({
+        client:values.client,
+        table:values.table,
+        time:new Date().toLocaleTimeString(),
+        endTime:null,
+        items:itemsOrder,
+        status:'Pending',
+      });
+    }
 
-    db.collection('orders').doc().set({
-      time:new Date().toLocaleTimeString(),
-      endTime:null,
-      items:itemsOrder,
-      status:'Pending',
-    });
   };
 
   return (
@@ -38,7 +57,7 @@ export const App = () => {
           {/* <Menu /> */}
         {/* </Route> */}
         <Route path="/waiter">
-          <OrderView addOrder={addOrder} />
+          <OrderView addOrder={addOrder} handleInputChange={handleInput} resetInput={values} cleanInput={cleanInput} />
         </Route>
         <Route path="/kitchen">
           <Kitchen onNotificationChange={onNotificationChange}/>

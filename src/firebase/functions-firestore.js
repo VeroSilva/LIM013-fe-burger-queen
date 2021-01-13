@@ -1,8 +1,6 @@
 import { db } from './initialization-firebase';
 
-
-  export const getOrder=(callback)=>{
-  
+export const getOrder=(callback)=>{
     db.collection('orders').orderBy('time').onSnapshot((doc) => {
       const arrayMenu =[]
       doc.forEach((el)=>{
@@ -13,6 +11,6 @@ import { db } from './initialization-firebase';
       })
       callback(arrayMenu);
     });
-  };
+};
 
 

@@ -6,7 +6,6 @@ body {
 }
 header {
   background-color: #2586bd;
-  padding: 10px;
   display: flex;
   align-items: center;
 }
@@ -22,12 +21,15 @@ header {
 }
 .input-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  grid-template-rows: 1fr 1fr;
 }
 .input {
-  padding: 12px 20px;
+  padding: 10px 10px;
   border-radius: 15px;
-  font-size: 17px;
+  font-size: 14px;
   border-style: none;
   box-sizing: border-box;
   width: 220px;
@@ -42,9 +44,13 @@ input[type="text"]:hover {
   border: none;
   border-radius: 15px;
   background-color: white;
-  font-size: 17px;
+  font-size: 14px;
+}
+.select:hover {
+  border: 3px solid #2586bd;
 }
 .btn-section {
+  grid-row: 2/3;
   display: flex;
   justify-content: center;
 }
@@ -162,8 +168,9 @@ input[type="text"]:hover {
   display: grid;
   grid-template-columns: 2fr 1fr;
   width: 95%;
-  margin: 20px auto;
-  grid-gap: 20px;
+  margin: 10px auto;
+  grid-gap: 15px;
+  align-items: center;
 }
 .item-product img {
   width: 100%;
@@ -171,6 +178,7 @@ input[type="text"]:hover {
   object-fit: cover;
 }
 .notifications {
+  grid-column: 2/3;
   display: flex;
   justify-content: flex-end;
   align-items: center;
