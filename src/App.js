@@ -23,7 +23,7 @@ export const App = () => {
   const [values, setValues] = useState(initialStateValues);
 
   const cleanInput=()=>{
-    setValues(initialStateValues);
+    setValues({...initialStateValues});
   }
   const handleInput=(data)=>{
     console.log(data);
@@ -52,12 +52,13 @@ export const App = () => {
   return (
     <Router>
       <Navbar nroNotifications={nroNotifications}/>
+
       <Switch>
         {/* <Route path="/restaurant" component={Menu} /> */}
           {/* <Menu /> */}
         {/* </Route> */}
         <Route path="/waiter">
-          <OrderView addOrder={addOrder} handleInputChange={handleInput} resetInput={values} cleanInput={cleanInput} />
+          <OrderView addOrder={addOrder} handleInputChange={handleInput} resetInput={values} cleanInput={cleanInput}/>
         </Route>
         <Route path="/kitchen">
           <Kitchen onNotificationChange={onNotificationChange}/>

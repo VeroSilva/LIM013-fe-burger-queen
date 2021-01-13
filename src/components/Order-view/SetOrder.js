@@ -47,6 +47,7 @@ export const SetOrder = (props) => {
           className ='button' 
           onClick={() => {
             props.addOrder(order);
+            props.cleanInput();
             cleanOrder();
           }}
         >Tomar pedido</button>
