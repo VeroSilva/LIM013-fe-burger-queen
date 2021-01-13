@@ -1,6 +1,6 @@
 .kitchen-section {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   margin: 20px;
   grid-gap: 20px;
 }
@@ -8,15 +8,23 @@
   list-style: none;
   border: 15px solid #d0d0d0;
   display: grid;
-  grid-template-rows: 30px 170px 35px;
+  /* grid-template-rows: 2px 30px 170px 25px; */
   border-radius: 15px;
   box-shadow: -9px 9px 5px -6px rgba(92, 92, 92, 0.43);
 }
+.order-number p{
+  margin:0px;
+  text-align: center;
+  border-bottom: 1px solid #dadada;
+}
 .detailes-order {
+  grid-row: 2/3;
   justify-content: space-between;
   display: flex;
   margin: 5px;
-  border-bottom: 1px solid #dadada;
+}
+.detailes-order p{
+  margin:0px;
 }
 .detailes-order .timer{
   background-color:coral;
@@ -27,10 +35,12 @@
   list-style: none;
   padding: 10px;
   overflow: scroll;
+  margin: 0px;
 }
 .orders button {
   border: none;
   color: white;
+  padding: 8px 0px;
 }
 .Done {
   background: green;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import Modal from 'react-modal';
 import '../../styles/kitchen.css';
+import { db } from '../../firebase/initialization-firebase';
 import { getOrder } from '../../firebase/functions-firestore';
 Modal.setAppElement('#root');
 
@@ -44,10 +45,10 @@ export const Kitchen = (props) => {
 
   const changeStatus = (id) => {
 
-    // db.collection('orders').doc(id).update({
-    //   endTime:new Date().toLocaleTimeString(),
-    //   status: "Done",
-    // });
+    db.collection('orders').doc(id).update({
+      endTime:new Date().toLocaleTimeString(),
+      status: "Done",
+    });
     const newDone = [id];
     props.onNotificationChange(newDone);
   };
@@ -56,9 +57,12 @@ export const Kitchen = (props) => {
     <section className="kitchen-section">
       {showOrder.map((order,index)=>
         <div key={order.id} className="orders">
-          <div className="detailes-order">
+          <div className="order-number">
             <p>Nro. {index+1}</p>
-            {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'minutes'))} min</p>}
+          </div>
+          <div className="detailes-order">
+            <p>{order.table}</p>
+            {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'seconds'))}s</p>}
             <p>{order.time}</p>
           </div>
           <ul className="items-order">
