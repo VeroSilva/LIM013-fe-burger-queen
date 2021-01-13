@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import Moment from 'react-moment';
 import Modal from 'react-modal';
 import '../../styles/kitchen.css';
 import { db } from '../../firebase/initialization-firebase';
@@ -62,7 +63,8 @@ export const Kitchen = (props) => {
           </div>
           <div className="detailes-order">
             <p>{order.table}</p>
-            {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'seconds'))}s</p>}
+            {order.endTime===null?'':<p className="timer">{<Moment from={moment(order.endTime,"hh:mm:ss")}>{moment(order.time,"hh:mm:ss")}</Moment>}</p>}
+            {/* {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'seconds'))}s</p>} */}
             <p>{order.time}</p>
           </div>
           <ul className="items-order">
