@@ -17,7 +17,7 @@ export const SetInfo = (props) => {
       <select className="select" 
         name="table"
         onChange={handleChange}
-        value={props.resetInput.client}
+        value={props.resetInput.table}
       >
         {options.map(option => {
           return <option value={option} key={option} >{option}</option>})}
