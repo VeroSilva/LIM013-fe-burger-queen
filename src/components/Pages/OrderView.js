@@ -10,9 +10,6 @@ export const OrderView = (props) => {
 
   const [typeFood, setTypeFood] = useState('desayuno');
 
-
-  console.log('this is our location: ', location);
-
   return(
     <section className="order-view-section">      
       <div className='btn-section'>

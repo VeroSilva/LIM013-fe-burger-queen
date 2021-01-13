@@ -15,10 +15,9 @@ export const Kitchen = (props) => {
   useEffect(()=>{
     const unsubscribe = ()=>{
       getOrder((data)=>{
-      console.log(data);
       setShowOrder(data);
     });
-  }
+    }
   //Cuando ya no necesites escuchar los datos, debes desvincular el agente de escucha para que 
   //dejen de hacerse solicitudes a las devoluciones de llamada de eventos. Esto permite al cliente 
   //dejar de usar ancho de banda para recibir actualizaciones.
