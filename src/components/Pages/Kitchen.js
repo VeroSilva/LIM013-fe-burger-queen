@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';
 import moment from 'moment';
 import Modal from 'react-modal';
-import '../styles/kitchen.css';
+import '../../styles/kitchen.css';
+import { db } from '../../firebase/initialization-firebase';
+import { getOrder } from '../../firebase/functions-firestore';
 Modal.setAppElement('#root');
 
 export const Kitchen = (props) => {
@@ -12,20 +13,35 @@ export const Kitchen = (props) => {
   const [idActive, setidActive] = useState();
 
   useEffect(()=>{
-    const unsubscribe=db.collection('orders').orderBy('time').onSnapshot((doc) => {
-      const arrayMenu =[]
-      doc.forEach((el)=>{
-        arrayMenu.push({
-          id:el.id,
-          ...el.data()
-        });
-      })
-      setShowOrder(arrayMenu);
+    const unsubscribe = ()=>{
+      getOrder((data)=>{
+      console.log(data);
+      setShowOrder(data);
     });
-    return ()=>{
-      unsubscribe();
-    };
+  }
+  //Cuando ya no necesites escuchar los datos, debes desvincular el agente de escucha para que 
+  //dejen de hacerse solicitudes a las devoluciones de llamada de eventos. Esto permite al cliente 
+  //dejar de usar ancho de banda para recibir actualizaciones.
+  //Unsubscribe() isn’t a function because what is returned from database is not a function. Call a function in return for cleanup. 
+  //Have a function that does the clean up and call it.
+    console.log(unsubscribe());
+    return () => unsubscribe();
+    
   }, []);
+  //Usage with Firestore Realtime Database:
+// This is useful when using Firestore Realtime Database:
+
+// useEffect(() => {
+//     //Subscribe: firebase channel
+//     const cleanUp = firebase.firestore().collection('photos') .doc(id)
+//         .onSnapshot( doc => {
+//             setLoading(false);
+//             setPhotos(doc)
+//         }, err => { setError(err); }
+//     );
+//     return () => cleanUp(); //Unsubscribe
+//  }, []);
+// If you forgot to clean your firestore subscription, you may receive unnecessary requests.
 
   const changeStatus = (id) => {
 
@@ -41,9 +57,12 @@ export const Kitchen = (props) => {
     <section className="kitchen-section">
       {showOrder.map((order,index)=>
         <div key={order.id} className="orders">
-          <div className="detailes-order">
+          <div className="order-number">
             <p>Nro. {index+1}</p>
-            {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'minutes'))} min</p>}
+          </div>
+          <div className="detailes-order">
+            <p>{order.table}</p>
+            {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'seconds'))}s</p>}
             <p>{order.time}</p>
           </div>
           <ul className="items-order">
