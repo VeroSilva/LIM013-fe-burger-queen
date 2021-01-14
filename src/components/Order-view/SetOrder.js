@@ -7,12 +7,39 @@ export const SetOrder = (props) => {
   
   const [menu, setMenu] = useState([]);
   const [order, setOrder] = useState([]);
+  const [count,setCount]=useState(1);
 
-  const selectProduct = (item) => {
-    setOrder([...order, item]);
-  }
-  const totalOrder=order.reduce((acc,menu)=>acc+menu.price,0);
   
+  const selectProduct = (item) => {
+    item.quantity = 0;
+    // console.log(item)
+    // order.map((product,item)=>{
+    //   console.log(product);
+    //   console.log(item);
+    //   if(product.id===item.id){
+
+    //     setOrder([...order, item]);
+    //   }else{
+    //     setOrder([...order, item]);
+    //   }
+      
+    // })
+    let exitProduct= order.filter(el => el.id === item.id);
+    console.log(exitProduct);
+    item.quantity = count;
+    if(exitProduct.length !==0){
+      setCount(count+1);
+    }else{
+      setOrder([...order, item]);
+      
+    }
+  }
+  
+  
+  const totalOrder=order.reduce((acc,menu)=>acc+menu.price,0);
+  const countProduct = () =>{
+    
+  }
   const onDeleteOrderList=(index)=>{
     let temporaryArray = [...order];
     temporaryArray.splice(index,1);
@@ -22,12 +49,15 @@ export const SetOrder = (props) => {
     db.collection('items').where('menu','==', props.typeFood).get()
     .then((queryResults)=>{
       const arrayMenu =[]
-      queryResults.forEach((doc)=>{arrayMenu.push(doc.data());
+      queryResults.forEach((doc)=>{
+        arrayMenu.push({
+          id:doc.id,
+          ...doc.data()
+        });
       })
       setMenu(arrayMenu)
     })
   },[props.typeFood]);
-
   const cleanOrder = () => {
     setOrder([]);
   };
@@ -35,7 +65,7 @@ export const SetOrder = (props) => {
   return (
     <>
       <ul className='display-list-product'>
-        {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} />)}
+        {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} countProduct={countProduct}/>)}
       </ul>
 
       <ul className="display-list-order">
