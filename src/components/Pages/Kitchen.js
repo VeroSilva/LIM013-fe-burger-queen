@@ -13,13 +13,15 @@ export const Kitchen = (props) => {
   const [idActive, setidActive] = useState();
 
   useEffect(()=>{
-    debugger
-    const unsubscribe = ()=>{
-      getOrder((data)=>{
-      setShowOrder(data);
+    let unmounted = false;
+    
+    getOrder((data)=> {
+      if(!unmounted){
+        setShowOrder(data)
+      }
     });
-    }
-    unsubscribe();
+
+    return () => { unmounted = true };
   }, []);
 
   const changeStatus = (id) => {

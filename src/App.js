@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { db } from './firebase/initialization-firebase';
+import { Home } from './components/Pages/Home';
 import { Kitchen } from './components/Pages/Kitchen';
 import { OrderView } from './components/Pages/OrderView';
 import { Navbar } from './components/Navbar';
@@ -53,14 +54,14 @@ export const App = () => {
     <Router>
       <Navbar nroNotifications={nroNotifications}/>
       <Switch>
-        {/* <Route path="/restaurant" component={Menu} /> */}
-          {/* <Menu /> */}
-        {/* </Route> */}
         <Route path="/waiter">
           <OrderView addOrder={addOrder} handleInputChange={handleInput} resetInput={values} cleanInput={cleanInput} />
         </Route>
         <Route path="/kitchen">
           <Kitchen onNotificationChange={onNotificationChange}/>
+        </Route>
+        <Route path="/">
+          <Home />
         </Route>
       </Switch>
     </Router>
