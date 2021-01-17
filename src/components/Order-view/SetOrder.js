@@ -7,32 +7,45 @@ export const SetOrder = (props) => {
   
   const [menu, setMenu] = useState([]);
   const [order, setOrder] = useState([]);
-  const [count,setCount]=useState(1);
+  const [count,setCount]=useState();
 
   
   const selectProduct = (item) => {
-    item.quantity = 0;
+    // item.quantity=1;
     // console.log(item)
+    // console.log(order)
     // order.map((product,item)=>{
     //   console.log(product);
     //   console.log(item);
     //   if(product.id===item.id){
-
-    //     setOrder([...order, item]);
+    //     console.log(product.quantity);
+    //     console.log(item.quantity);
+    //     setCount([...order,item]);
     //   }else{
     //     setOrder([...order, item]);
     //   }
-      
+    //   return order;
     // })
-    let exitProduct= order.filter(el => el.id === item.id);
-    console.log(exitProduct);
-    item.quantity = count;
-    if(exitProduct.length !==0){
-      setCount(count+1);
+    let existProduct= order.filter(el => el.id === item.id);
+    item.quantity=1;
+    console.log(existProduct);
+    if(existProduct.length !==0){
+      setOrder([{ ...order, quantity: existProduct[0].quantity+1}]);
+      // setOrder([...order, {quantity:item.quantity+1}]);
+      // setOrder(order.map( el =>  ({ ...el, quantity: el.quantity+1})
+      
+     
+      
+      // setOrder([...exitProduct, [exitProduct[0].quantity]:1 ])
+      // console.log(exitProduct);
+      // console.log(order)
+      //setOrder([...exitProduct,obj.quantity=count]);
+      
     }else{
       setOrder([...order, item]);
       
     }
+    console.log(order);
   }
   
   
