@@ -51,7 +51,6 @@ export const SetOrder = (props) => {
           }}
         >Tomar pedido</button>
       </ul>
-
     </>
   )
 };
