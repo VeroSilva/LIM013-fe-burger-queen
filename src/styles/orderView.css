@@ -159,8 +159,8 @@ input[type="text"]:hover {
 .item-order {
   list-style: none;
   display: grid;
-  grid-template-columns: 60% 20% 20%;
-  grid-template-areas: "name price delete";
+  grid-template-columns: 10% 50% 20% 20%;
+  grid-template-areas: "Qty name price delete";
   align-items: center;
   margin-bottom: 10px;
 }
