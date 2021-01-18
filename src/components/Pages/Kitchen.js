@@ -24,7 +24,7 @@ export const Kitchen = (props) => {
 
     return () => { unmounted = true };
   }, []);
-
+console.log(showOrder);
   const changeStatus = (id) => {
 
     db.collection('orders').doc(id).update({
@@ -50,7 +50,12 @@ export const Kitchen = (props) => {
           </div>
           <ul className="items-order">
             {order.items.map((element,index)=>
-            <li key={'o'+index}>{element}</li>)}
+            <li className='items-order-detail' key={'o'+index}>
+              <p>{element.quantity}</p>
+              <p>{element.product}</p>
+              </li>
+            )}
+          
           </ul>
           <button
             className = {order.status}

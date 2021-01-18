@@ -36,6 +36,10 @@
   overflow: scroll;
   margin: 0px;
 }
+.items-order-detail{
+  display: grid;
+    grid-template-columns: 18% 82%;
+}
 .orders button {
   border: none;
   color: white;
