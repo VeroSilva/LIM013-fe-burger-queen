@@ -11,41 +11,15 @@ export const SetOrder = (props) => {
 
   
   const selectProduct = (item) => {
-    // item.quantity=1;
-    // console.log(item)
-    // console.log(order)
-    // order.map((product,item)=>{
-    //   console.log(product);
-    //   console.log(item);
-    //   if(product.id===item.id){
-    //     console.log(product.quantity);
-    //     console.log(item.quantity);
-    //     setCount([...order,item]);
-    //   }else{
-    //     setOrder([...order, item]);
-    //   }
-    //   return order;
-    // })
+
     let existProduct= order.findIndex(el => el.id === item.id);
     item.quantity=1;
     console.log(existProduct);
     if(existProduct !== -1){
       setOrder(order.map((obj)=>(obj.id === item.id ? {...obj, quantity: obj.quantity+1} : obj)
       ));
-        // [{ ...order, quantity: order[existProduct].quantity+1}]);
-      // setOrder([...order, {quantity:item.quantity+1}]);
-      // setOrder(order.map( el =>  ({ ...el, quantity: el.quantity+1})
-      
-     
-      
-      // setOrder([...exitProduct, [exitProduct[0].quantity]:1 ])
-      // console.log(exitProduct);
-      // console.log(order)
-      //setOrder([...exitProduct,obj.quantity=count]);
-      
     }else{
       setOrder([...order, item]);
-      
     }
     console.log(order);
   }
