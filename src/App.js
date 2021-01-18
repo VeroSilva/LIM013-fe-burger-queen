@@ -9,6 +9,7 @@ import { Home } from './components/Pages/Home';
 import { Kitchen } from './components/Pages/Kitchen';
 import { OrderView } from './components/Pages/OrderView';
 import { Navbar } from './components/Navbar';
+import { getData } from './firebase/functions-firestore';
 
 export const App = () => {
 
@@ -42,14 +43,15 @@ export const App = () => {
     if(values===initialStateValues || itemsOrder.length===0){
       alert("Termine de completar para registrar su orden")
     }else{
-      db.collection('orders').doc().set({
-        client:values.client,
-        table:values.table,
-        time:new Date().toLocaleTimeString(),
-        endTime:null,
-        items:itemsOrder,
-        status:'Pending',
-      });
+      getData.createOrder(itemsOrder,values)
+      // db.collection('orders').doc().set({
+      //   client:values.client,
+      //   table:values.table,
+      //   time:new Date().toLocaleTimeString(),
+      //   endTime:null,
+      //   items:itemsOrder,
+      //   status:'Pending',
+      // });
     }
 
   };
