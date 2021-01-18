@@ -1,19 +1,19 @@
 .kitchen-section {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px;
   grid-gap: 20px;
 }
 .orders {
   list-style: none;
   border: 15px solid #d0d0d0;
   display: grid;
-  /* grid-template-rows: 2px 30px 170px 25px; */
+  grid-template-rows: 20px 30px 160px 35px;
   border-radius: 15px;
   box-shadow: -9px 9px 5px -6px rgba(92, 92, 92, 0.43);
 }
-.order-number p{
-  margin:0px;
+.order-number p {
+  margin: 0px;
   text-align: center;
   border-bottom: 1px solid #dadada;
 }
@@ -23,13 +23,12 @@
   display: flex;
   margin: 5px;
 }
-.detailes-order p{
-  margin:0px;
+.detailes-order p {
+  margin: 0px;
 }
-.detailes-order .timer{
-  background-color:coral;
-  border-radius:15px;
-  
+.detailes-order .timer {
+  background-color: coral;
+  border-radius: 15px;
 }
 .items-order {
   list-style: none;

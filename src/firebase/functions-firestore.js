@@ -1,8 +1,9 @@
 import { db } from './initialization-firebase';
 
-export const getOrder=(callback)=>{
-    db.collection('orders').orderBy('time').onSnapshot((doc) => {
-      const arrayMenu =[]
+const getData = {
+  getOrder: (callback) => {
+    db.collection('orders').where("status", "==", "Pending").orderBy('time', 'desc').onSnapshot((doc) => {
+      const arrayMenu =[];
       doc.forEach((el)=>{
         arrayMenu.push({
           id:el.id,
@@ -11,6 +12,18 @@ export const getOrder=(callback)=>{
       })
       callback(arrayMenu);
     });
+  },
+
+  getOrdersDone: () => {
+    return db.collection('orders').where("status", "==", "Done").get()
+    .then((queryResults)=>{
+      const ordersDone = [];
+      queryResults.forEach((doc)=>{
+        ordersDone.push(doc.data());
+      })
+      return ordersDone;
+    });
+  },
 };
 
-
+export { getData };

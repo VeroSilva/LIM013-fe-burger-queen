@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { SetInfo } from '../Order-view/InfoClient';
 import { SetOrder } from '../Order-view/SetOrder';
+import { getData } from '../../firebase/functions-firestore';
 import '../../styles/orderView.css';
-import { useLocation } from "react-router-dom";
 
 export const OrderView = (props) => {
-
-  const location = useLocation();
-
+  
+  const [nroNotifications, setNroNotifications] = useState();
   const [typeFood, setTypeFood] = useState('desayuno');
 
-
-  console.log('this is our location: ', location);
+  const ordersDone = getData.getOrdersDone();
+  ordersDone.then((res) => {
+    setNroNotifications(res.length);
+  });
 
   return(
     <section className="order-view-section">      
@@ -20,7 +21,7 @@ export const OrderView = (props) => {
           <button className="button menu" onClick={()=>{setTypeFood('almuerzo y cena')}}>Almuerzo y cena</button>
       </div>
       <div className='notifications'>
-        <label>{location.state.length}</label>
+        <label>{nroNotifications}</label>
         <span className="material-icons notification-order-done">
           notifications
         </span>

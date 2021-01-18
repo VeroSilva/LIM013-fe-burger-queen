@@ -39,7 +39,7 @@ export const SetOrder = (props) => {
       </ul>
 
       <ul className="display-list-order">
-        <div>
+        <div className="each-list-order">
           {order.map((item, index) => <OrderList key = {'o'+ index} itemProduct = {item} onDelete={()=>onDeleteOrderList(index)}/>)}
         </div>
         <div className="price-total">Total S/. {totalOrder}</div>
@@ -52,7 +52,6 @@ export const SetOrder = (props) => {
           }}
         >Tomar pedido</button>
       </ul>
-
     </>
   )
 };

@@ -3,7 +3,7 @@ import moment from 'moment';
 import Modal from 'react-modal';
 import '../../styles/kitchen.css';
 import { db } from '../../firebase/initialization-firebase';
-import { getOrder } from '../../firebase/functions-firestore';
+import { getData } from '../../firebase/functions-firestore';
 Modal.setAppElement('#root');
 
 export const Kitchen = (props) => {
@@ -13,35 +13,16 @@ export const Kitchen = (props) => {
   const [idActive, setidActive] = useState();
 
   useEffect(()=>{
-    const unsubscribe = ()=>{
-      getOrder((data)=>{
-      console.log(data);
-      setShowOrder(data);
-    });
-  }
-  //Cuando ya no necesites escuchar los datos, debes desvincular el agente de escucha para que 
-  //dejen de hacerse solicitudes a las devoluciones de llamada de eventos. Esto permite al cliente 
-  //dejar de usar ancho de banda para recibir actualizaciones.
-  //Unsubscribe() isn’t a function because what is returned from database is not a function. Call a function in return for cleanup. 
-  //Have a function that does the clean up and call it.
-    console.log(unsubscribe());
-    return () => unsubscribe();
+    let unmounted = false;
     
-  }, []);
-  //Usage with Firestore Realtime Database:
-// This is useful when using Firestore Realtime Database:
+    getData.getOrder((data)=> {
+      if(!unmounted){
+        setShowOrder(data)
+      }
+    });
 
-// useEffect(() => {
-//     //Subscribe: firebase channel
-//     const cleanUp = firebase.firestore().collection('photos') .doc(id)
-//         .onSnapshot( doc => {
-//             setLoading(false);
-//             setPhotos(doc)
-//         }, err => { setError(err); }
-//     );
-//     return () => cleanUp(); //Unsubscribe
-//  }, []);
-// If you forgot to clean your firestore subscription, you may receive unnecessary requests.
+    return () => { unmounted = true };
+  }, []);
 
   const changeStatus = (id) => {
 
