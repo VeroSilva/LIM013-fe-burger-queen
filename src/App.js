@@ -33,8 +33,12 @@ export const App = () => {
   }
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
-      return element['description'];
+      const newObj={};
+      newObj.product=element.description;
+      newObj.quantity=element.quantity;
+      return newObj;
     });
+    console.log(itemsOrder)
     if(values===initialStateValues || itemsOrder.length===0){
       alert("Termine de completar para registrar su orden")
     }else{

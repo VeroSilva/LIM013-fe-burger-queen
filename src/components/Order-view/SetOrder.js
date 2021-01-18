@@ -25,7 +25,7 @@ export const SetOrder = (props) => {
   }
   
   
-  const totalOrder=order.reduce((acc,menu)=>acc+menu.price,0);
+  const totalOrder=order.reduce((acc,menu)=>acc+menu.price*menu.quantity,0);
   const countProduct = () =>{
     
   }
