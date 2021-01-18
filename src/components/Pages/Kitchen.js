@@ -46,7 +46,7 @@ console.log(showOrder);
             <p>{order.table}</p>
             {order.endTime===null?'':<p className="timer">{<Moment from={moment(order.endTime,"hh:mm:ss")}>{moment(order.time,"hh:mm:ss")}</Moment>}</p>}
             {/* {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'seconds'))}s</p>} */}
-            <p>{order.time}</p>
+            {/* <p>{order.time}</p> */}
           </div>
           <ul className="items-order">
             {order.items.map((element,index)=>
