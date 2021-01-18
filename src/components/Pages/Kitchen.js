@@ -13,6 +13,7 @@ export const Kitchen = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [idActive, setidActive] = useState();
 
+
   useEffect(()=>{
     let unmounted = false;
     
@@ -24,11 +25,10 @@ export const Kitchen = (props) => {
 
     return () => { unmounted = true };
   }, []);
-console.log(showOrder);
-  const changeStatus = (id) => {
 
+  const changeStatus = (id) => {
     db.collection('orders').doc(id).update({
-      endTime:new Date().toLocaleTimeString(),
+      endTime: new Date(),
       status: "Done",
     });
     const newDone = [id];
@@ -46,7 +46,11 @@ console.log(showOrder);
             <p>{order.table}</p>
             {order.endTime===null?'':<p className="timer">{<Moment from={moment(order.endTime,"hh:mm:ss")}>{moment(order.time,"hh:mm:ss")}</Moment>}</p>}
             {/* {order.endTime===null?'':<p className="timer">{(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),'seconds'))}s</p>} */}
-            <p>{order.time}</p>
+          <p>
+            {new Date(order.time.seconds*1000).getHours()}:
+            {new Date(order.time.seconds*1000).getMinutes()}:
+            {new Date(order.time.seconds*1000).getSeconds()}
+          </p>
           </div>
           <ul className="items-order">
             {order.items.map((element,index)=>

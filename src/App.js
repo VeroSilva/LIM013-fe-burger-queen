@@ -45,7 +45,7 @@ export const App = () => {
       db.collection('orders').doc().set({
         client:values.client,
         table:values.table,
-        time:new Date().toLocaleTimeString(),
+        time:new Date(),
         endTime:null,
         items:itemsOrder,
         status:'Pending',
