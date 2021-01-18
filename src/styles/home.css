@@ -1,0 +1,48 @@
+.bg-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url("../images/background-BQ-Home.png") no-repeat center;
+  background-size: cover;
+}
+.home-view {
+  width: 50%;
+}
+.home-view h1 {
+  width: 50%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  color: #909090;
+}
+.routes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.routes a {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #909090;
+  text-decoration: none;
+  height: 150px;
+  border: 2px solid #2586bd;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 0.5s;
+}
+a:visited {
+  color: #909090;
+}
+.routes a:hover {
+  background: #2586bd;
+  color: white;
+}
+.bg-home {
+  height: 100vh;
+  margin: 0px !important;
+  background: url("../images/background-BQ-Home.png");
+}

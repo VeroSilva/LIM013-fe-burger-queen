@@ -3,7 +3,7 @@ import moment from 'moment';
 import Modal from 'react-modal';
 import '../../styles/kitchen.css';
 import { db } from '../../firebase/initialization-firebase';
-import { getOrder } from '../../firebase/functions-firestore';
+import { getData } from '../../firebase/functions-firestore';
 Modal.setAppElement('#root');
 
 export const Kitchen = (props) => {
@@ -15,7 +15,7 @@ export const Kitchen = (props) => {
   useEffect(()=>{
     let unmounted = false;
     
-    getOrder((data)=> {
+    getData.getOrder((data)=> {
       if(!unmounted){
         setShowOrder(data)
       }
