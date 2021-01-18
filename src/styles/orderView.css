@@ -9,16 +9,7 @@ header {
   display: flex;
   align-items: center;
 }
-.directions-links {
-  right: 0;
-  position: absolute;
-  margin-right: 15px;
-}
-.directions-links a {
-  margin: 0px 5px 0px 5px;
-  color: white;
-  text-decoration: none;
-}
+
 .input-section {
   display: grid;
   grid-gap: 10px;
@@ -163,8 +154,8 @@ input[type="text"]:hover {
 .item-order {
   list-style: none;
   display: grid;
-  grid-template-columns: 60% 20% 20%;
-  grid-template-areas: "name price delete";
+  grid-template-columns: 10% 50% 20% 20%;
+  grid-template-areas: "Qty name price delete";
   align-items: center;
   margin-bottom: 10px;
 }

@@ -7,12 +7,28 @@ export const SetOrder = (props) => {
   
   const [menu, setMenu] = useState([]);
   const [order, setOrder] = useState([]);
+  const [count,setCount]=useState();
 
-  const selectProduct = (item) => {
-    setOrder([...order, item]);
-  }
-  const totalOrder=order.reduce((acc,menu)=>acc+menu.price,0);
   
+  const selectProduct = (item) => {
+
+    let existProduct= order.findIndex(el => el.id === item.id);
+    item.quantity=1;
+    console.log(existProduct);
+    if(existProduct !== -1){
+      setOrder(order.map((obj)=>(obj.id === item.id ? {...obj, quantity: obj.quantity+1} : obj)
+      ));
+    }else{
+      setOrder([...order, item]);
+    }
+    console.log(order);
+  }
+  
+  
+  const totalOrder=order.reduce((acc,menu)=>acc+menu.price,0);
+  const countProduct = () =>{
+    
+  }
   const onDeleteOrderList=(index)=>{
     let temporaryArray = [...order];
     temporaryArray.splice(index,1);
@@ -22,12 +38,15 @@ export const SetOrder = (props) => {
     db.collection('items').where('menu','==', props.typeFood).get()
     .then((queryResults)=>{
       const arrayMenu =[]
-      queryResults.forEach((doc)=>{arrayMenu.push(doc.data());
+      queryResults.forEach((doc)=>{
+        arrayMenu.push({
+          id:doc.id,
+          ...doc.data()
+        });
       })
       setMenu(arrayMenu)
     })
   },[props.typeFood]);
-
   const cleanOrder = () => {
     setOrder([]);
   };
@@ -35,7 +54,7 @@ export const SetOrder = (props) => {
   return (
     <>
       <ul className='display-list-product'>
-        {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} />)}
+        {menu.map((item, index) => <Product key = {'m'+ index} itemProduct = {item}  selectProduct={selectProduct} countProduct={countProduct}/>)}
       </ul>
 
       <ul className="display-list-order">
