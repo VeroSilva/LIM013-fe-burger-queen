@@ -1,39 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import OrderList from './OrderList';
 import Product from './Product';
 import db from '../../firebase/initialization-firebase';
 
 const SetOrder = (props) => {
+  const { typeFood, addOrder, cleanInput } = props;
+
   const [menu, setMenu] = useState([]);
   const [order, setOrder] = useState([]);
 
   function selectProduct(item) {
     const existProduct = order.findIndex((el) => el.id === item.id);
-    // eslint-disable-next-line no-param-reassign
-    item.quantity = 1;
     if (existProduct !== -1) {
       setOrder(
-        order.map((obj) => (obj.id === item.id ? { ...obj, quantity: obj.quantity + 1 } : obj)),
+        order.map((obj) => (obj.id
+          === item.id ? { ...obj, quantity: obj.quantity + 1 } : obj)),
       );
     } else {
-      setOrder([...order, item]);
+      const newItem = { ...item, quantity: 1 };
+      setOrder([...order, newItem]);
     }
   }
 
   const totalOrder = order.reduce(
-    (acc, selectedProduct) => (acc + selectedProduct.price * selectedProduct.quantity, 0),
+    (acc, selectedProduct) => acc + (selectedProduct.price * selectedProduct.quantity), 0,
   );
 
-  const countProduct = () => {
-
-  };
   const onDeleteOrderList = (index) => {
     const temporaryArray = [...order];
     temporaryArray.splice(index, 1);
     setOrder(temporaryArray);
   };
+
   useEffect(() => {
-    db.collection('items').where('menu', '==', props.typeFood).get()
+    db.collection('items').where('menu', '==', typeFood).get()
       .then((queryResults) => {
         const arrayMenu = [];
         queryResults.forEach((doc) => {
@@ -44,7 +45,7 @@ const SetOrder = (props) => {
         });
         setMenu(arrayMenu);
       });
-  }, [props.typeFood]);
+  }, [typeFood]);
 
   const cleanOrder = () => {
     setOrder([]);
@@ -53,12 +54,11 @@ const SetOrder = (props) => {
   return (
     <>
       <ul className="display-list-product">
-        {menu.map((item, index) => (
+        {menu.map((item) => (
           <Product
-            key={`m${index}`}
+            key={item.id}
             itemProduct={item}
             selectProduct={selectProduct}
-            countProduct={countProduct}
           />
         ))}
       </ul>
@@ -67,7 +67,7 @@ const SetOrder = (props) => {
         <div className="each-list-order">
           {order.map((item, index) => (
             <OrderList
-              key={`o${index}`}
+              key={item.id}
               itemProduct={item}
               onDelete={() => onDeleteOrderList(index)}
             />
@@ -81,8 +81,8 @@ const SetOrder = (props) => {
           type="button"
           className="button"
           onClick={() => {
-            props.addOrder(order);
-            props.cleanInput();
+            addOrder(order);
+            cleanInput();
             cleanOrder();
           }}
         >
@@ -92,4 +92,11 @@ const SetOrder = (props) => {
     </>
   );
 };
+
+SetOrder.propTypes = {
+  typeFood: PropTypes.string.isRequired,
+  addOrder: PropTypes.func.isRequired,
+  cleanInput: PropTypes.func.isRequired,
+};
+
 export default SetOrder;

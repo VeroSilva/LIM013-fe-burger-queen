@@ -40,16 +40,14 @@ const getData = {
       });
   },
 
-  getOrdersDone: () => {
-    db.collection('orders').where('status', '==', 'Done').get()
-      .then((queryResults) => {
-        const ordersDone = [];
-        queryResults.forEach((doc) => {
-          ordersDone.push(doc.data());
-        });
-        return ordersDone;
+  getOrdersDone: () => db.collection('orders').where('status', '==', 'Done').get()
+    .then((queryResults) => {
+      const ordersDone = [];
+      queryResults.forEach((doc) => {
+        ordersDone.push(doc.data());
       });
-  },
+      return ordersDone;
+    }),
 
   updateOrder: (idDoc) => {
     db.collection('orders').doc(idDoc).update({

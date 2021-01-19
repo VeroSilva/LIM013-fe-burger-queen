@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import Moment from 'react-moment';
 import Modal from 'react-modal';
@@ -56,8 +57,8 @@ const Kitchen = (props) => {
             {/* <p>{order.time}</p> */}
           </div>
           <ul className="items-order">
-            {order.items.map((element, index) => (
-              <li className="items-order-detail" key={`o${index}`}>
+            {order.items.map((element) => (
+              <li className="items-order-detail" key={element.id}>
                 <p>{element.quantity}</p>
                 <p>{element.product}</p>
               </li>
@@ -103,6 +104,10 @@ const Kitchen = (props) => {
       </Modal>
     </section>
   );
+};
+
+Kitchen.propTypes = {
+  onNotificationChange: PropTypes.string.isRequired,
 };
 
 export default Kitchen;
