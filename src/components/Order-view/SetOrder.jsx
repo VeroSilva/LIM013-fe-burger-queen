@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import OrderList from './OrderList';
 import Product from './Product';
-import db from '../../firebase/initialization-firebase';
+import getData from '../../firebase/functions-firestore';
 
 const SetOrder = (props) => {
   const { typeFood, addOrder, cleanInput } = props;
@@ -34,17 +34,9 @@ const SetOrder = (props) => {
   };
 
   useEffect(() => {
-    db.collection('items').where('menu', '==', typeFood).get()
-      .then((queryResults) => {
-        const arrayMenu = [];
-        queryResults.forEach((doc) => {
-          arrayMenu.push({
-            id: doc.id,
-            ...doc.data(),
-          });
-        });
-        setMenu(arrayMenu);
-      });
+    getData.getMenu(props.typeFood).then((newMenu) => {
+      setMenu(newMenu);
+    });
   }, [typeFood]);
 
   const cleanOrder = () => {

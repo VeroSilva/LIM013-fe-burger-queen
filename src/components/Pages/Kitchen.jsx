@@ -54,7 +54,13 @@ const Kitchen = (props) => {
             {/* {order.endTime===null?'':<p className="timer">
             {(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),
             'seconds'))}s</p>} */}
-            {/* <p>{order.time}</p> */}
+            <p>
+              {new Date(order.time.seconds * 1000).getHours()}
+              :
+              {new Date(order.time.seconds * 1000).getMinutes()}
+              :
+              {new Date(order.time.seconds * 1000).getSeconds()}
+            </p>
           </div>
           <ul className="items-order">
             {order.items.map((element) => (

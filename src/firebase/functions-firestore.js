@@ -6,7 +6,7 @@ const getData = {
     db.collection('orders').doc().set({
       client: data.client,
       table: data.table,
-      time: new Date().toLocaleTimeString(),
+      time: new Date(),
       endTime: null,
       items: order,
       status: 'Pending',
@@ -26,19 +26,17 @@ const getData = {
     });
   },
 
-  getMenu: (typeFood) => {
-    db.collection('items').where('menu', '==', typeFood).get()
-      .then((queryResults) => {
-        const menu = [];
-        queryResults.forEach((doc) => {
-          menu.push({
-            id: doc.id,
-            ...doc.data(),
-          });
+  getMenu: (typeFood) => db.collection('items').where('menu', '==', typeFood).get()
+    .then((queryResults) => {
+      const menu = [];
+      queryResults.forEach((doc) => {
+        menu.push({
+          id: doc.id,
+          ...doc.data(),
         });
-        return menu;
       });
-  },
+      return menu;
+    }),
 
   getOrdersDone: () => db.collection('orders').where('status', '==', 'Done').get()
     .then((queryResults) => {
