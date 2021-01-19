@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import Moment from 'react-moment';
 import Modal from 'react-modal';
-import '../../styles/kitchen.css';
+import '../../styles/listOrders.css';
 import getData from '../../firebase/functions-firestore';
 
 Modal.setAppElement('#root');
 
 const Kitchen = (props) => {
+  const { onNotificationChange, status } = props;
+
   const [showOrder, setShowOrder] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [idActive, setidActive] = useState();
@@ -20,7 +22,7 @@ const Kitchen = (props) => {
       if (!unmounted) {
         setShowOrder(data);
       }
-    });
+    }, status);
 
     return () => { unmounted = true; };
   }, []);
@@ -28,11 +30,11 @@ const Kitchen = (props) => {
   const changeStatus = (id) => {
     getData.updateOrder(id);
     const newDone = [id];
-    props.onNotificationChange(newDone);
+    onNotificationChange(newDone);
   };
 
   return (
-    <section className="kitchen-section">
+    <section className="list-orders-section">
       {showOrder.map((order, index) => (
         <div key={order.id} className="orders">
           <div className="order-number">
@@ -51,9 +53,6 @@ const Kitchen = (props) => {
                   </Moment>
                 </p>
               )}
-            {/* {order.endTime===null?'':<p className="timer">
-            {(moment(order.endTime,"hh:mm:ss").diff(moment(order.time,"hh:mm:ss"),
-            'seconds'))}s</p>} */}
             <p>
               {new Date(order.time.seconds * 1000).getHours()}
               :
@@ -89,7 +88,9 @@ const Kitchen = (props) => {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
       >
-        <h2>¿This order is done?</h2>
+        <h2>
+          ¿Are you sure?
+        </h2>
         <div className="buttons-modal">
           <button
             type="button"
@@ -104,7 +105,7 @@ const Kitchen = (props) => {
               setModalIsOpen(false);
             }}
           >
-            Done
+            Yes
           </button>
         </div>
       </Modal>
@@ -114,6 +115,7 @@ const Kitchen = (props) => {
 
 Kitchen.propTypes = {
   onNotificationChange: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
 };
 
 export default Kitchen;

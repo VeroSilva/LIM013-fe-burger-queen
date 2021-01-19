@@ -8,10 +8,10 @@
 }
 .directions-links ul {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   height: 50px;
   margin: 0px !important;
-  width: 200px;
+  width: 300px;
 }
 .directions-links ul li {
   list-style: none;

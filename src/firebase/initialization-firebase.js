@@ -3,12 +3,12 @@ import 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyB1IQgIs83X70fTM09G99JqQ3IrX36KRdg',
-  authDomain: 'burguer-queen-428af.firebaseapp.com',
-  projectId: 'burguer-queen-428af',
-  storageBucket: 'burguer-queen-428af.appspot.com',
-  messagingSenderId: '124064613385',
-  appId: '1:124064613385:web:96b731517426de8796e4d8',
+  apiKey: 'AIzaSyDDTLbzCMYBOP8YToX7vyZQWtrs6KtDCUI',
+  authDomain: 'burguer-queen-d21f6.firebaseapp.com',
+  projectId: 'burguer-queen-d21f6',
+  storageBucket: 'burguer-queen-d21f6.appspot.com',
+  messagingSenderId: '110811223073',
+  appId: '1:110811223073:web:5c8954850d5a100071ff60',
 };
 // Initialize Firebase
 const fb = firebase.initializeApp(firebaseConfig);
