@@ -1,22 +1,20 @@
 .bg-home {
   display: grid;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr 2fr 1fr;
   align-items: center;
   justify-items: center;
-  /* height: 100vh; */
   background: url("../images/background-BQ-Home.png") no-repeat center;
   background-size: cover;
 }
 .home-view {
-
   max-height: 600px;
   min-height: 48vh;
   grid-row: 2/3;
   grid-column: 2/3;
+  width: 100%;
 }
 .home-view h1 {
-  
   display: flex;
   justify-content: center;
   color: #909090;

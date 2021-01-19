@@ -13,8 +13,8 @@ const getData = {
     });
   },
 
-  getOrder: (callback) => {
-    db.collection('orders').where('status', '==', 'Pending').orderBy('time', 'desc').onSnapshot((doc) => {
+  getOrder: (callback, status) => {
+    db.collection('orders').where('status', '==', status).orderBy('time', 'desc').onSnapshot((doc) => {
       const arrayMenu = [];
       doc.forEach((el) => {
         arrayMenu.push({
@@ -48,12 +48,23 @@ const getData = {
     }),
 
   updateOrder: (idDoc) => {
+    // let newStatus;
     db.collection('orders').doc(idDoc).update({
       endTime: new Date().toLocaleTimeString(),
       status: 'Done',
     });
   },
-
 };
 
 export default getData;
+
+// .get()
+//       .then((order) => {
+//         // console.log(order);
+//         if (order.data().status === 'Pending') {
+//           newStatus = 'Done';
+//         } else {
+//           newStatus = 'Delivered';
+//         }
+
+//         order.data().
