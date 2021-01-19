@@ -27,7 +27,9 @@ const Navbar = (props) => {
           <li>
             <NavLink to="/kitchen" activeClassName="active">Kitchen</NavLink>
           </li>
-
+          <li>
+            <NavLink to="/delivery" activeClassName="active">Delivery</NavLink>
+          </li>
         </ul>
 
       </nav>

@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import Home from './components/Pages/Home';
-import Kitchen from './components/Pages/Kitchen';
+import ListOrders from './components/Pages/ListOrders';
 import OrderView from './components/Pages/OrderView';
 import Navbar from './components/Navbar';
 import getData from './firebase/functions-firestore';
@@ -61,7 +61,10 @@ const App = () => {
           />
         </Route>
         <Route path="/kitchen">
-          <Kitchen onNotificationChange={onNotificationChange} />
+          <ListOrders onNotificationChange={onNotificationChange} status="Pending" />
+        </Route>
+        <Route path="/delivery">
+          <ListOrders onNotificationChange={onNotificationChange} status="Done" />
         </Route>
         <Route path="/">
           <Home />
