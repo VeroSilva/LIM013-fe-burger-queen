@@ -7,21 +7,22 @@ const SetOrder = (props) => {
   const [menu, setMenu] = useState([]);
   const [order, setOrder] = useState([]);
 
-  const selectProduct = (item) => {
+  function selectProduct(item) {
     const existProduct = order.findIndex((el) => el.id === item.id);
+    // eslint-disable-next-line no-param-reassign
     item.quantity = 1;
-    console.log(existProduct);
     if (existProduct !== -1) {
-      // eslint-disable-next-line max-len
-      setOrder(order.map((obj) => (obj.id === item.id ? { ...obj, quantity: obj.quantity + 1 } : obj)));
+      setOrder(
+        order.map((obj) => (obj.id === item.id ? { ...obj, quantity: obj.quantity + 1 } : obj)),
+      );
     } else {
       setOrder([...order, item]);
     }
-    console.log(order);
-  };
+  }
 
-  // eslint-disable-next-line max-len
-  const totalOrder = order.reduce((acc, selectedProduct) => (acc + selectedProduct.price * selectedProduct.quantity, 0));
+  const totalOrder = order.reduce(
+    (acc, selectedProduct) => (acc + selectedProduct.price * selectedProduct.quantity, 0),
+  );
 
   const countProduct = () => {
 
@@ -44,6 +45,7 @@ const SetOrder = (props) => {
         setMenu(arrayMenu);
       });
   }, [props.typeFood]);
+
   const cleanOrder = () => {
     setOrder([]);
   };

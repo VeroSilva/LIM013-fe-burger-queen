@@ -18,10 +18,5 @@ module.exports = {
     'react',
   ],
   rules: {
-    'linebreak-style': 0,
-    'no-console': 'off',
-    'max-len': [2, 120, 4, { ignoreUrls: true }],
-    'react/prop-types': 0,
-    'react/destructuring-assignment': 0,
   },
 };

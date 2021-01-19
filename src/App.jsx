@@ -25,11 +25,12 @@ const App = () => {
   const cleanInput = () => {
     setValues({ ...initialStateValues });
   };
+
   const handleInput = (data) => {
-    console.log(data);
     const { name, value } = data;
     setValues({ ...values, [name]: value });
   };
+
   const addOrder = (order) => {
     const itemsOrder = order.map((element) => {
       const newObj = {};
@@ -37,7 +38,7 @@ const App = () => {
       newObj.quantity = element.quantity;
       return newObj;
     });
-    console.log(itemsOrder);
+
     if (values === initialStateValues || itemsOrder.length === 0) {
       // eslint-disable-next-line no-alert
       alert('Termine de completar para registrar su orden');
@@ -52,7 +53,12 @@ const App = () => {
 
       <Switch>
         <Route path="/waiter">
-          <OrderView addOrder={addOrder} handleInputChange={handleInput} resetInput={values} cleanInput={cleanInput} />
+          <OrderView
+            addOrder={addOrder}
+            handleInputChange={handleInput}
+            resetInput={values}
+            cleanInput={cleanInput}
+          />
         </Route>
         <Route path="/kitchen">
           <Kitchen onNotificationChange={onNotificationChange} />

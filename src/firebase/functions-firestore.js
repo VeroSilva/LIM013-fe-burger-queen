@@ -1,7 +1,7 @@
 import db from './initialization-firebase';
 
 const getData = {
-  
+
   createOrder: (order, data) => {
     db.collection('orders').doc().set({
       client: data.client,
@@ -27,26 +27,26 @@ const getData = {
   },
 
   getMenu: (typeFood) => {
-    return db.collection('items').where('menu','==', typeFood).get()
-      .then((queryResults)=>{
-        const menu =[]
-        queryResults.forEach((doc)=>{
+    db.collection('items').where('menu', '==', typeFood).get()
+      .then((queryResults) => {
+        const menu = [];
+        queryResults.forEach((doc) => {
           menu.push({
-            id:doc.id,
-            ...doc.data()
+            id: doc.id,
+            ...doc.data(),
           });
-        })
+        });
         return menu;
-      })
+      });
   },
 
   getOrdersDone: () => {
-    return db.collection('orders').where("status", "==", "Done").get()
-      .then((queryResults)=>{
+    db.collection('orders').where('status', '==', 'Done').get()
+      .then((queryResults) => {
         const ordersDone = [];
-        queryResults.forEach((doc)=>{
+        queryResults.forEach((doc) => {
           ordersDone.push(doc.data());
-        })
+        });
         return ordersDone;
       });
   },
