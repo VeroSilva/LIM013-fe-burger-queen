@@ -1,28 +1,30 @@
 .directions-links {
   right: 0;
   position: absolute;
-  /* margin-right: 10px; */
 }
 .directions-links a {
-  margin: 0px 10px 0px 0px;
   color: white;
   text-decoration: none;
 }
-.directions-links ul{
-  display: flex;
-  flex-direction: row;
+.directions-links ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 50px;
+  margin: 0px !important;
+  width: 200px;
 }
 .directions-links ul li {
-  margin:0px 0px 0px 10px;
-list-style:none;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.active{
-  background-color: #2586A3;
-    padding: 1.3rem 1rem;
-    /* border-radius: 10px; */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  /* background-color: lightblue;
-  padding: 5px;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+.active {
+  background-color: #1f6c97;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
