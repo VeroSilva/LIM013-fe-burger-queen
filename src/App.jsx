@@ -60,12 +60,24 @@ const App = () => {
             cleanInput={cleanInput}
           />
         </Route>
-        <Route path="/kitchen">
-          <ListOrders onNotificationChange={onNotificationChange} status="Pending" />
-        </Route>
-        <Route path="/delivery">
-          <ListOrders onNotificationChange={onNotificationChange} status="Done" />
-        </Route>
+        <Route
+          path="/kitchen"
+          component={() => (
+            <ListOrders
+              onNotificationChange={onNotificationChange}
+              status="Pending"
+            />
+          )}
+        />
+        <Route
+          path="/delivery"
+          component={() => (
+            <ListOrders
+              onNotificationChange={onNotificationChange}
+              status="Done"
+            />
+          )}
+        />
         <Route path="/">
           <Home />
         </Route>

@@ -25,10 +25,10 @@ const Navbar = (props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/kitchen" activeClassName="active">Kitchen</NavLink>
+            <NavLink to="/kitchen" activeClassName="active" key={window.location.pathname}>Kitchen</NavLink>
           </li>
           <li>
-            <NavLink to="/delivery" activeClassName="active">Delivery</NavLink>
+            <NavLink to="/delivery" activeClassName="active" key={window.location.pathname}>Delivery</NavLink>
           </li>
         </ul>
 
