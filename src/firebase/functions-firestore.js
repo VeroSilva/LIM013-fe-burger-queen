@@ -47,11 +47,11 @@ const getData = {
       return ordersDone;
     }),
 
-  updateOrder: (idDoc) => {
+  updateOrder: (idDoc, newStatus) => {
     db.collection('orders').doc(idDoc)
       .update({
         endTime: new Date().toLocaleTimeString(),
-        status: 'Done',
+        status: newStatus,
       });
   },
 };
