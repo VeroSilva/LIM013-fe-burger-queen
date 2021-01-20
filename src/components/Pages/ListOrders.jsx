@@ -67,6 +67,7 @@ const Kitchen = (props) => {
               {new Date(order.time.seconds * 1000).getMinutes()}
               :
               {new Date(order.time.seconds * 1000).getSeconds()}
+
             </p>
           </div>
           {(location.pathname === '/delivery')
