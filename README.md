@@ -1,23 +1,15 @@
-# Burger Queen 
+# Burger Queen  :hamburger:
 
-## Índice
-
-* [1. Descripción del Proyecto](#1-descripción-del-proyecto)
-* [2. Requerimientos](#2-requerimientos)
-* [3. Tecnologías Aplicadas](#3-tecnologías-aplicadas)
-* [4. Autoras](#4-autoras)
-***
 ## 1. Descripción del Proyecto
 
 Burger Queen está pensada para un restaurante de hamburguesas, que está creciendo, necesita una interfaz en la que puedan tomar pedidos usando una _tablet_, y enviarlos
 a la cocina para que se preparen ordenada y eficientemente (a través de un
   _backend_ ).
-[Proyecto](https://user-images.githubusercontent.com/68167686/105413472-24aeeb80-5c04-11eb-9cd1-ba7425eb7c8c.gif).
+![Proyecto](https://user-images.githubusercontent.com/68167686/105413472-24aeeb80-5c04-11eb-9cd1-ba7425eb7c8c.gif).
 
 ## 2. Resumen del proyecto
 
 En este proyeto se desarollaron las siguientes historias de usuario.
-***
 #### [Historia de usuario 1] Mesero/a debe poder tomar pedido de cliente
 
 Yo como meserx quiero tomar el pedido de un cliente para no depender de mi mala
