@@ -47,11 +47,6 @@ const getData = {
       return ordersDone;
     }),
 
-  updateOrder: (idDoc, finalTime) => db.collection('orders').doc(idDoc)
-    .update({
-      endTime: finalTime,
-      status: 'Done',
-    }),
 
   getFinalTime: (idDoc) => db.collection('orders').doc(idDoc).get()
     .then((order) => {
@@ -76,6 +71,15 @@ const getData = {
     .update({
       finalTime,
     }),
+
+  updateOrder: (idDoc, newStatus) => {
+    db.collection('orders').doc(idDoc)
+      .update({
+        endTime: new Date().toLocaleTimeString(),
+        status: newStatus,
+      });
+  },
+
 };
 
 export default getData;

@@ -20,6 +20,11 @@ const App = () => {
     client: '',
     table: '',
   };
+  const status = {
+    pending: 'Pending',
+    done: 'Done',
+    delivered: 'Delivered',
+  };
   const [values, setValues] = useState(initialStateValues);
 
   const cleanInput = () => {
@@ -65,7 +70,7 @@ const App = () => {
           component={() => (
             <ListOrders
               onNotificationChange={onNotificationChange}
-              status="Pending"
+              status={status.pending}
             />
           )}
         />
@@ -74,7 +79,7 @@ const App = () => {
           component={() => (
             <ListOrders
               onNotificationChange={onNotificationChange}
-              status="Done"
+              status={status.done}
             />
           )}
         />

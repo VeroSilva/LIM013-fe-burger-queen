@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import '../../styles/listOrders.css';
@@ -8,11 +9,10 @@ Modal.setAppElement('#root');
 
 const Kitchen = (props) => {
   const { onNotificationChange, status } = props;
-
   const [showOrder, setShowOrder] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [idActive, setidActive] = useState();
-
+  const location = useLocation();
   useEffect(() => {
     let unmounted = false;
 
@@ -24,7 +24,7 @@ const Kitchen = (props) => {
 
     return () => { unmounted = true; };
   }, []);
-
+  console.log(location.pathname);
   const changeStatus = (id) => {
     const endTime = new Date();
 
@@ -32,9 +32,17 @@ const Kitchen = (props) => {
     getData.getFinalTime(id).then((finalTime) => {
       getData.updateTime(id, finalTime);
     });
-
     const newDone = [id];
     onNotificationChange(newDone);
+    const done = 'Done';
+    const delivered = 'Delivered';
+    if (location.pathname === '/kitchen') {
+      getData.updateOrder(id, done);
+      console.log('actualizado');
+    } else {
+      getData.updateOrder(id, delivered);
+      console.log('actualizado a delivered');
+    }
   };
 
   return (
@@ -61,8 +69,16 @@ const Kitchen = (props) => {
               {new Date(order.time.seconds * 1000).getMinutes()}
               :
               {new Date(order.time.seconds * 1000).getSeconds()}
+
             </p>
           </div>
+          {(location.pathname === '/delivery')
+            ? (
+              <p>
+                Cliente:
+                {order.client}
+              </p>
+            ) : ''}
           <ul className="items-order">
             {order.items.map((element) => (
               <li className="items-order-detail" key={element.id}>

@@ -8,9 +8,12 @@
   list-style: none;
   border: 15px solid #d0d0d0;
   display: grid;
-  grid-template-rows: 20px 30px 160px 35px;
+  grid-template-rows: 20px 30px 20px 140px 35px;
   border-radius: 15px;
   box-shadow: -9px 9px 5px -6px rgba(92, 92, 92, 0.43);
+}
+.orders p{
+  margin:0px;
 }
 .order-number p {
   margin: 0px;
@@ -39,6 +42,7 @@
   padding: 5px;
   overflow: scroll;
   margin: 0px;
+  grid-row: 4/5;
 }
 .items-order-detail {
   display: flex;
@@ -51,6 +55,7 @@
   border: none;
   color: white;
   padding: 8px 0px;
+  grid-row: 5/6;
 }
 .Done {
   background: green;
