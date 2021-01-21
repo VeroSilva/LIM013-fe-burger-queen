@@ -87,5 +87,5 @@ rápidamente a los clientes que las hicieron.
 * [ ] Css
 
 ## 4. Autoras  :star:
-* Verónica Silva [React](https://github.com/VeroSilva)
-* Verónica Flotes [React](https://github.com/VeroFlores)
+* Verónica Silva [Repositorio](https://github.com/VeroSilva?tab=repositories)
+* Verónica Flotes [Pespositorio](https://github.com/VeroFlores?tab=repositories)
