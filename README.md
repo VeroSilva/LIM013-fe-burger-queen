@@ -2,13 +2,10 @@
 
 ## Índice
 
-* [1. Descripción](#1-descripción)
-* [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-* [4. Consideraciones generales](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Pistas, tips y lecturas complementarias](#6-pistas-tips-y-lecturas-complementarias)
-
+* [1. Descripción del Proyecto](#1-descripción-del-proyecto)
+* [2. Requerimientos](#2-requerimientos)
+* [3. Tecnologías Aplicadas](#3-tecnologías-aplicadas)
+* [4. Autoras](#4-autoras)
 ***
 ## 1. Descripción del Proyecto
 
@@ -87,7 +84,7 @@ rápidamente a los clientes que las hicieron.
 * Los datos se deben mantener íntegros, incluso después de que un pedido ha
   terminado. Todo esto para poder tener estadísticas en el futuro.
 
-## 3. Tecnologías Aplicadas :hammer:
+## 3. Tecnologías Aplicadas  :hammer:
 
 * [ ] React Js
 * [ ] React Router
@@ -97,7 +94,6 @@ rápidamente a los clientes que las hicieron.
 * [ ] Javascript 
 * [ ] Css
 
-## 4. Autores  :star:
+## 4. Autoras  :star:
 * Verónica Silva [React](https://github.com/VeroSilva)
 * Verónica Flotes [React](https://github.com/VeroFlores)
-
