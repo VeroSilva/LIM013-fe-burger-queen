@@ -27,8 +27,12 @@
   margin: 0px;
 }
 .detailes-order .timer {
-  background-color: coral;
+  background-color: #1f6c97;
   border-radius: 15px;
+  color: white;
+  width: 50px;
+  display: flex;
+  justify-content: center;
 }
 .items-order {
   list-style: none;
@@ -108,4 +112,10 @@
   .list-orders-section {
     grid-template-columns: repeat(4, 1fr);
   }
-} ;
+}
+
+@media screen and (max-width: 500px) {
+  .list-orders-section {
+    grid-template-columns: 1fr;
+  }
+}

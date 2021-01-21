@@ -178,3 +178,16 @@ input[type="text"]:hover {
   justify-content: flex-end;
   align-items: center;
 }
+
+@media screen and (max-width: 500px) {
+  .order-view-section {
+    grid-template-columns: 1fr;
+  }
+  .notifications {
+    grid-column: initial;
+    grid-row: 1/2;
+  }
+  .input-section {
+    grid-row: 4 / 5;
+  }
+}
