@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import Moment from 'react-moment';
 import Modal from 'react-modal';
 import '../../styles/listOrders.css';
 import getData from '../../firebase/functions-firestore';
@@ -28,7 +26,13 @@ const Kitchen = (props) => {
   }, []);
 
   const changeStatus = (id) => {
-    getData.updateOrder(id);
+    const endTime = new Date();
+
+    getData.updateOrder(id, endTime);
+    getData.getFinalTime(id).then((finalTime) => {
+      getData.updateTime(id, finalTime);
+    });
+
     const newDone = [id];
     onNotificationChange(newDone);
   };
@@ -48,9 +52,7 @@ const Kitchen = (props) => {
             {order.endTime === null ? ''
               : (
                 <p className="timer">
-                  <Moment from={moment(order.endTime, 'hh:mm:ss')}>
-                    {moment(order.time, 'hh:mm:ss')}
-                  </Moment>
+                  {order.finalTime}
                 </p>
               )}
             <p>

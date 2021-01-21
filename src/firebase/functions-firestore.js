@@ -47,29 +47,35 @@ const getData = {
       return ordersDone;
     }),
 
-  updateOrder: (idDoc) => {
-    db.collection('orders').doc(idDoc)
-      .update({
-        endTime: new Date().toLocaleTimeString(),
-        status: 'Done',
-      });
-  },
+  updateOrder: (idDoc, finalTime) => db.collection('orders').doc(idDoc)
+    .update({
+      endTime: finalTime,
+      status: 'Done',
+    }),
+
+  getFinalTime: (idDoc) => db.collection('orders').doc(idDoc).get()
+    .then((order) => {
+      const timeDiff = order.data().endTime.toDate().getTime()
+        - order.data().time.toDate().getTime();
+
+      // 1- Convert to seconds:
+      let seconds = Math.floor(timeDiff / 1000);
+
+      // 2- Extract minutes:
+      // eslint-disable-next-line radix
+      const minutes = parseInt(seconds / 60); // 60 seconds in 1 minute
+
+      // 3- Keep only seconds not extracted to minutes:
+      seconds %= 60;
+
+      const finalTime = `${minutes}:${seconds}`;
+      return finalTime;
+    }),
+
+  updateTime: (id, finalTime) => db.collection('orders').doc(id)
+    .update({
+      finalTime,
+    }),
 };
 
 export default getData;
-
-// .get()
-//       .then((order) => {
-//         if (order.data().status === 'Pending') {
-//           newStatus = 'Done';
-//         } else if (order.data().status === 'Done') {
-//           newStatus = 'Delivered';
-//         }
-//         return (newStatus, order);
-//       })
-//       .then((statusValue, order) => {
-//         order.update({
-//           endTime: new Date().toLocaleTimeString(),
-//           status: statusValue,
-//         });
-//       });
