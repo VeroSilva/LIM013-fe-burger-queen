@@ -79,12 +79,12 @@ rápidamente a los clientes que las hicieron.
 
 ## 3. Tecnologías Aplicadas :hammer:
 
-- [ ] Javascript con React Js
-- [ ] React Router
-- [ ] Jest
-- [ ] Firebase
-- [ ] Guía de estilos Airbnb
-- [ ] CSS
+- Javascript, React Js
+- React Router
+- Jest
+- Firebase
+- Guía de estilos Airbnb
+- CSS
 
 ## 4. Autoras :star:
 
