@@ -47,7 +47,6 @@ const getData = {
       return ordersDone;
     }),
 
-
   getFinalTime: (idDoc) => db.collection('orders').doc(idDoc).get()
     .then((order) => {
       const timeDiff = order.data().endTime.toDate().getTime()
@@ -75,7 +74,7 @@ const getData = {
   updateOrder: (idDoc, newStatus) => {
     db.collection('orders').doc(idDoc)
       .update({
-        endTime: new Date().toLocaleTimeString(),
+        endTime: new Date(),
         status: newStatus,
       });
   },
