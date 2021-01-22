@@ -42,3 +42,9 @@
   background: #1f6c97;
   color: white;
 }
+
+@media screen and (max-width: 500px) {
+  .routes {
+    grid-template-columns: 1fr;
+  }
+}

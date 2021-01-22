@@ -24,7 +24,7 @@ const Kitchen = (props) => {
 
     return () => { unmounted = true; };
   }, []);
-  console.log(location.pathname);
+
   const changeStatus = (id) => {
     const endTime = new Date();
 
@@ -32,16 +32,15 @@ const Kitchen = (props) => {
     getData.getFinalTime(id).then((finalTime) => {
       getData.updateTime(id, finalTime);
     });
+
     const newDone = [id];
     onNotificationChange(newDone);
     const done = 'Done';
     const delivered = 'Delivered';
     if (location.pathname === '/kitchen') {
       getData.updateOrder(id, done);
-      console.log('actualizado');
     } else {
       getData.updateOrder(id, delivered);
-      console.log('actualizado a delivered');
     }
   };
 
