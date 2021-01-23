@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/VeroSilva/LIM013-fe-burger-queen/static/css/main.9103d34d.chunk.css",
-    "main.js": "/VeroSilva/LIM013-fe-burger-queen/static/js/main.ccf01857.chunk.js",
-    "main.js.map": "/VeroSilva/LIM013-fe-burger-queen/static/js/main.ccf01857.chunk.js.map",
-    "runtime-main.js": "/VeroSilva/LIM013-fe-burger-queen/static/js/runtime-main.d367d0c2.js",
-    "runtime-main.js.map": "/VeroSilva/LIM013-fe-burger-queen/static/js/runtime-main.d367d0c2.js.map",
-    "static/js/2.82d9ef56.chunk.js": "/VeroSilva/LIM013-fe-burger-queen/static/js/2.82d9ef56.chunk.js",
-    "static/js/2.82d9ef56.chunk.js.map": "/VeroSilva/LIM013-fe-burger-queen/static/js/2.82d9ef56.chunk.js.map",
-    "static/js/3.10e0b6d5.chunk.js": "/VeroSilva/LIM013-fe-burger-queen/static/js/3.10e0b6d5.chunk.js",
-    "static/js/3.10e0b6d5.chunk.js.map": "/VeroSilva/LIM013-fe-burger-queen/static/js/3.10e0b6d5.chunk.js.map",
-    "index.html": "/VeroSilva/LIM013-fe-burger-queen/index.html",
-    "static/css/main.9103d34d.chunk.css.map": "/VeroSilva/LIM013-fe-burger-queen/static/css/main.9103d34d.chunk.css.map",
-    "static/js/2.82d9ef56.chunk.js.LICENSE.txt": "/VeroSilva/LIM013-fe-burger-queen/static/js/2.82d9ef56.chunk.js.LICENSE.txt",
-    "static/media/home.css": "/VeroSilva/LIM013-fe-burger-queen/static/media/background-BQ-Home.f0282990.png"
+    "main.css": "/LIM013-fe-burger-queen/static/css/main.11f52558.chunk.css",
+    "main.js": "/LIM013-fe-burger-queen/static/js/main.92bd97a5.chunk.js",
+    "main.js.map": "/LIM013-fe-burger-queen/static/js/main.92bd97a5.chunk.js.map",
+    "runtime-main.js": "/LIM013-fe-burger-queen/static/js/runtime-main.608c3b25.js",
+    "runtime-main.js.map": "/LIM013-fe-burger-queen/static/js/runtime-main.608c3b25.js.map",
+    "static/js/2.9528fd15.chunk.js": "/LIM013-fe-burger-queen/static/js/2.9528fd15.chunk.js",
+    "static/js/2.9528fd15.chunk.js.map": "/LIM013-fe-burger-queen/static/js/2.9528fd15.chunk.js.map",
+    "static/js/3.10e0b6d5.chunk.js": "/LIM013-fe-burger-queen/static/js/3.10e0b6d5.chunk.js",
+    "static/js/3.10e0b6d5.chunk.js.map": "/LIM013-fe-burger-queen/static/js/3.10e0b6d5.chunk.js.map",
+    "index.html": "/LIM013-fe-burger-queen/index.html",
+    "static/css/main.11f52558.chunk.css.map": "/LIM013-fe-burger-queen/static/css/main.11f52558.chunk.css.map",
+    "static/js/2.9528fd15.chunk.js.LICENSE.txt": "/LIM013-fe-burger-queen/static/js/2.9528fd15.chunk.js.LICENSE.txt",
+    "static/media/home.css": "/LIM013-fe-burger-queen/static/media/background-BQ-Home.f0282990.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d367d0c2.js",
-    "static/js/2.82d9ef56.chunk.js",
-    "static/css/main.9103d34d.chunk.css",
-    "static/js/main.ccf01857.chunk.js"
+    "static/js/runtime-main.608c3b25.js",
+    "static/js/2.9528fd15.chunk.js",
+    "static/css/main.11f52558.chunk.css",
+    "static/js/main.92bd97a5.chunk.js"
   ]
 }
