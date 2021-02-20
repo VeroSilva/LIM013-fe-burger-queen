@@ -1,5 +1,7 @@
 # Burger Queen :hamburger:
 
+Live: https://verosilva.github.io/LIM013-fe-burger-queen/
+
 ## 1. Descripción del Proyecto
 
 Burger Queen está pensada para un restaurante de hamburguesas, que está creciendo, necesita una interfaz en la que puedan tomar pedidos usando una _tablet_, y enviarlos
@@ -19,7 +21,7 @@ que se puedan ir preparando en orden.
 
 ##### Criterios de aceptación
 
-Lo que debe ocurrir para que se satisfagan las necesidades del usuario)
+Lo que debe ocurrir para que se satisfagan las necesidades del usuario
 
 - Anotar nombre de cliente.
 - Agregar productos al pedido.
